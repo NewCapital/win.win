@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="14px" viewBox="0 0 24 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>arrow-point-to-right</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="draft-v1-copy" transform="translate(-829.000000, -731.000000)" fill="#FFFFFF">
+            <g id="arrow-point-to-right" transform="translate(841.000000, 738.000000) rotate(-270.000000) translate(-841.000000, -738.000000) translate(834.000000, 726.000000)">
+                <path d="M13.4962991,13.1881234 L2.93597262,23.5074218 C2.2642083,24.1641927 1.17505761,24.1641927 0.503619411,23.5074218 C-0.167873137,22.851235 -0.167873137,21.7869633 0.503619411,21.1308297 L9.84787795,11.9998274 L0.503891183,2.86914376 C-0.167601366,2.21269146 -0.167601366,1.14852594 0.503891183,0.492339221 C1.17538373,-0.164113074 2.26448007,-0.164113074 2.93624439,0.492339221 L13.4965708,10.8117969 C13.8323171,11.1400496 14,11.5698057 14,11.9997743 C14,12.4299553 13.831991,12.8600301 13.4962991,13.1881234 Z" id="Path"></path>
+            </g>
+        </g>
+    </g>
+</svg>
