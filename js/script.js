@@ -81,14 +81,14 @@ $(document).ready(function() {
   blockResize();
 
   // run function after window resize
-  $( window ).resize(function() {
+  $(window).resize(function() {
     blockResize();
   });
 
   // fix menu on top after scroll
-  $(window).scroll(function () {
+  $(window).scroll(function() {
     var scrollPosition = $(document).scrollTop();
-    if (scrollPosition >= (viewPortHeight - 56) ) {
+    if (scrollPosition >= (viewPortHeight - 56)) {
       menu.addClass('fixed')
     } else {
       menu.removeClass('fixed')
@@ -108,5 +108,77 @@ $(document).ready(function() {
     $(this).slideUp();
   });
 
+  // get periodic statistics
+  (function worker() {
+    $.ajax({
+      url: 'https://sandbox.win.win/ext/getstats',
+      success: function(data) {
+        $('#total_wallets_count').html(data.total_wallets_count);
+        $('#active_wallets_count').html(data.active_wallets_count);
+        $('#money_supply').html(numberWithSpaces(data.money_supply.toFixed()));
+        $('#masternode_count').html(data.masternode_count);
+        $('#block_count').html(data.block_count);
+        $('#dev_wallet_balance').html(numberWithSpaces(data.dev_wallet_balance.toFixed()));
+        $('#twins_locked').html(data.twins_locked);
+      },
+      complete: function() {
+        // Schedule the next request when the current one's complete
+        setTimeout(worker, 60000);
+      }
+    });
+  })();
+
+  (function($) {
+    $.fn.extend({
+      rotaterator: function(options) {
+
+        var defaults = {
+          fadeSpeed: 2000,
+          pauseSpeed: 5000,
+          child: null
+        };
+
+        var options = $.extend(defaults, options);
+
+        return this.each(function() {
+          var o = options;
+          var obj = $(this);
+          var items = $(obj.children(), obj);
+          items.each(function() {
+            $(this).hide();
+          })
+          if (!o.child) {
+            var next = $(obj).children(':first');
+          } else {
+            var next = o.child;
+          }
+          $(next).fadeIn(o.fadeSpeed, function() {
+            $(next).delay(o.pauseSpeed).fadeOut(o.fadeSpeed, function() {
+              var next = $(this).next();
+              if (next.length == 0) {
+                next = $(obj).children(':first');
+              }
+              $(obj).rotaterator({
+                child: next,
+                fadeSpeed: o.fadeSpeed,
+                pauseSpeed: o.pauseSpeed
+              });
+            })
+          });
+        });
+      }
+    });
+  })(jQuery);
+
+  $(document).ready(function() {
+    $('#rotate').rotaterator({
+      fadeSpeed: 500,
+      pauseSpeed: 2000
+    });
+  });
 
 });
+
+function numberWithSpaces(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+}
