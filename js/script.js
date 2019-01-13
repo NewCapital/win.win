@@ -111,7 +111,7 @@ $(document).ready(function() {
   // get periodic statistics
   (function worker() {
     $.ajax({
-      url: 'https://sandbox.win.win/ext/getstats',
+      url: 'https://explorer.win.win/ext/getstats',
       success: function(data) {
         $('#total_wallets_count').html(data.total_wallets_count);
         $('#active_wallets_count').html(data.active_wallets_count);
