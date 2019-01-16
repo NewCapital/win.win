@@ -120,6 +120,7 @@ $(document).ready(function() {
         $('#block_count').html(data.block_count);
         $('#dev_wallet_balance').html(numberWithSpaces(data.dev_wallet_balance.toFixed()));
         $('#twins_locked').html(data.twins_locked);
+        $('#current_block_time').html(data.average_sec_per_block);
       },
       complete: function() {
         // Schedule the next request when the current one's complete
