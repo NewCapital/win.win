@@ -183,3 +183,22 @@ $(document).ready(function() {
 function numberWithSpaces(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 }
+
+// dropdown
+$(document).ready(function() {
+  var wallet = $('.wallet_container');
+  wallet.on('click', function() {
+    // event.preventDefault();
+    $('.dropdown').fadeOut('fast');
+    $(this).children('.dropdown').fadeIn('fast');
+    $('.wallet_container').addClass('wallet_container_selected');
+    $(this).removeClass('wallet_container_selected');
+  });
+
+  $(document).click(function(event) {
+    if (!$(event.target).closest(".wallet_logo_block").length) {
+      $('.dropdown').fadeOut('fast');
+      $('.wallet_container').removeClass('wallet_container_selected');
+    }
+  });
+});
