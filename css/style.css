@@ -615,6 +615,29 @@ th, td {
   margin-bottom: 40px;
 }
 
+.button_discord a {
+  margin-top: 24px;
+  display: inline-block;
+  padding: 10px 24px;
+  padding-left: 56px;
+  background-color: #5CB54B;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  background-image: url(../img/discord2.svg);
+  background-repeat: no-repeat;
+  background-position: 12px 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s
+}
+.button_discord a:hover {
+  background-color: #61C74E;
+}
+.image_join {
+  margin-top: -32px;
+}
+
 /* MEDIA */
 @media (max-width: 980px) {
   .user_info {
