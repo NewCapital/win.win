@@ -617,6 +617,8 @@ th, td {
 
 .button_discord a {
   margin-top: 24px;
+  align-items: center;
+  justify-content: center;
   display: inline-block;
   padding: 10px 24px;
   padding-left: 56px;
