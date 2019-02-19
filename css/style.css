@@ -331,7 +331,7 @@ h2 {
 }
 
 .col img {
-  width: 100%;
+  width: 90%;
   height: auto;
   transform: scale(0.7);
 }
@@ -355,7 +355,6 @@ h2 {
 
 .user_card {
   background: #FFFFFF;
-  box-shadow: 0 2px 49px 0 rgba(0,0,0,0.10);
   width: 100%;
   margin-right: 32px;
   position: relative;
@@ -363,6 +362,7 @@ h2 {
 
 .user_pic {
   margin-top: -60px;
+  text-align: center;
 }
 
 .user_info {
@@ -380,6 +380,15 @@ h2 {
 .user_info a {
   text-decoration: none;
   color: #3eb54e;
+}
+
+.center_alligment {
+  text-align: center;
+}
+
+.min_width {
+  max-width: 760px;
+  margin: 0 auto;
 }
 
 .roadmap {
