@@ -65,6 +65,32 @@ h2 {
   color: #ffffff;
 }
 
+.coin_info {
+  background-color: rgba(0,0,0,.4);
+  color:#ffffff;
+  max-width: 440px;
+  margin: 0 auto;
+  border-radius: 300px;
+  margin-top: 48px;
+  text-align: left;
+  position: relative;
+  transition: transform 0.3s, border-radius 0.3s;
+}
+.info_img {
+  height: 24px;
+  padding: 8px;
+  position: absolute;
+
+}
+.info_coin_text {
+  text-align: center;
+  padding: 6px 0px;
+  color: #cccccc;
+}
+.info_coin_text span {
+  color:#ffffff;
+}
+
 .timer {
   margin: 0 auto;
   margin-top: 64px;
@@ -654,6 +680,10 @@ th, td {
     position: inherit;
     bottom: auto;
   }
+  .logo_media {
+    margin-left: auto;
+    margin-right: auto;
+  }
 
   .footer_links {
     position: inherit;
@@ -663,6 +693,7 @@ th, td {
   .container {
     padding-left: 24px;
     padding-right: 24px;
+    width: 100%
   }
 
   .wallet_logo_block {
@@ -731,7 +762,7 @@ th, td {
 
 
 
-@media (max-width: 620px) {
+@media (max-width: 800px) {
   .menu_items ul {
     display: none;
   }

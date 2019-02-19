@@ -173,9 +173,17 @@ $(document).ready(function() {
 
   $(document).ready(function() {
     $('#rotate').rotaterator({
-      fadeSpeed: 500,
-      pauseSpeed: 2000
+      fadeSpeed: 0,
+      pauseSpeed: 3000
     });
+    setInterval(function() {
+      $('.info_coin_text').css('opacity', '0');
+      $('.coin_info').addClass('counter_block_active');
+      setTimeout(function() {
+        $('.info_coin_text').css('opacity', '1');
+        $('.coin_info').removeClass('counter_block_active');
+      }, 300);
+    }, 3000)
   });
 
 });
