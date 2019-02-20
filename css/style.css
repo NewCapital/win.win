@@ -363,6 +363,9 @@ h2 {
   margin-right: 32px;
   position: relative;
 }
+.user_card a {
+  text-decoration: none;
+}
 
 .user_pic {
   margin-top: -60px;
@@ -379,11 +382,13 @@ h2 {
   font-weight: 600;
   color: #3eb54e;
   text-transform: uppercase;
+  text-decoration: none;
 }
 
 .user_info a {
   text-decoration: none;
   color: #3eb54e;
+  text-decoration: none;
 }
 
 .center_alligment {
@@ -444,12 +449,12 @@ h2 {
 }
 .logo_block_inner {
   background-color: #ffffff;
-  padding: 40px;
   border-radius: 8px;
   box-shadow: 0 3px 8px 0 rgba(0,0,0,0.04);
 }
 .logo_block_inner a {
   display: block;
+  padding: 40px;
 }
 .logo_block_inner a img {
   width: 100%;
