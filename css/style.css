@@ -65,6 +65,37 @@ h2 {
   color: #ffffff;
 }
 
+.coin_info {
+  background-color: rgba(0,0,0,.4);
+  color:#ffffff;
+  max-width: 440px;
+  margin: 0 auto;
+  border-radius: 300px;
+  margin-top: 48px;
+  text-align: left;
+  position: relative;
+  align-items: center;
+  display: flex;
+  transition: transform 0.3s, border-radius 0.3s;
+}
+.info_img {
+  height: 24px;
+  padding: 8px;
+  position: absolute;
+
+}
+.info_coin_text {
+  text-align: center;
+  padding: 6px 0px;
+  color: #cccccc;
+  margin-left: 40px;
+  margin-right: 40px;
+  width: 100%;
+}
+.info_coin_text span {
+  color:#ffffff;
+}
+
 .timer {
   margin: 0 auto;
   margin-top: 64px;
@@ -281,6 +312,10 @@ h2 {
   margin-bottom: 64px;
 }
 
+.row_margin {
+  margin-bottom: 0px!important;
+}
+
 .row:last-child {
   margin-bottom: 0px;
 }
@@ -300,7 +335,7 @@ h2 {
 }
 
 .col img {
-  width: 100%;
+  width: 90%;
   height: auto;
   transform: scale(0.7);
 }
@@ -311,7 +346,7 @@ h2 {
 }
 
 .how {
-  background-color: #3eb54e;
+  background-color: #F6F6F6;
 }
 
 .first {
@@ -324,14 +359,17 @@ h2 {
 
 .user_card {
   background: #FFFFFF;
-  box-shadow: 0 2px 49px 0 rgba(0,0,0,0.10);
   width: 100%;
   margin-right: 32px;
   position: relative;
 }
+.user_card a {
+  text-decoration: none;
+}
 
 .user_pic {
   margin-top: -60px;
+  text-align: center;
 }
 
 .user_info {
@@ -344,18 +382,29 @@ h2 {
   font-weight: 600;
   color: #3eb54e;
   text-transform: uppercase;
+  text-decoration: none;
 }
 
 .user_info a {
   text-decoration: none;
   color: #3eb54e;
+  text-decoration: none;
+}
+
+.center_alligment {
+  text-align: center;
+}
+
+.min_width {
+  max-width: 760px;
+  margin: 0 auto;
 }
 
 .roadmap {
-  background-color: #ffffff;
+  background-color: #f6f6f6;
 }
 .props {
-  background-color: #F5F5F5;
+  background-color: #ffffff;
 }
 
 .center_title {
@@ -368,8 +417,8 @@ h2 {
 }
 
 .stage {
-  background-color: #3eb54e;
-  color: #ffffff;
+  background-color: #FFFFFF;
+  color: #4C4C4C;
   border-radius: 100px;
   line-height: 24px;
   padding: 8px 24px;
@@ -382,6 +431,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 3px 8px 0 rgba(0,0,0,0.04);
 }
 
 .stagetitle {
@@ -393,6 +443,24 @@ h2 {
   margin-right: 120px;
   width: 100px;
 } */
+
+.logo_block {
+  padding: 24px;
+}
+.logo_block_inner {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px 0 rgba(0,0,0,0.04);
+}
+.logo_block_inner a {
+  display: block;
+  padding: 40px;
+}
+.logo_block_inner a img {
+  width: 100%;
+  height: auto;
+  transform: scale(1);
+}
 
 .logo_media {
   width: 200px;
@@ -654,6 +722,10 @@ th, td {
     position: inherit;
     bottom: auto;
   }
+  .logo_media {
+    margin-left: auto;
+    margin-right: auto;
+  }
 
   .footer_links {
     position: inherit;
@@ -663,6 +735,7 @@ th, td {
   .container {
     padding-left: 24px;
     padding-right: 24px;
+    width: 100%
   }
 
   .wallet_logo_block {
@@ -731,7 +804,7 @@ th, td {
 
 
 
-@media (max-width: 620px) {
+@media (max-width: 800px) {
   .menu_items ul {
     display: none;
   }
