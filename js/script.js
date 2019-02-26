@@ -51,6 +51,7 @@ $(document).ready(function() {
     $.ajax({
       url: 'https://explorer.win.win/ext/getstats',
       success: function(data) {
+        console.log(data);
         $('#total_wallets_count').html(data.total_wallets_count);
         $('#active_wallets_count').html(data.active_wallets_count);
         $('#money_supply').html(numberWithSpaces(data.money_supply.toFixed()));
