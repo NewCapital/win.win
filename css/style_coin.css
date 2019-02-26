@@ -15,6 +15,9 @@
 .primary_container {
 
 }
+.coin_info {
+  cursor: pointer;
+}
 .row {
   margin-left: 0rem!important;
   margin-right: 0rem!important;
