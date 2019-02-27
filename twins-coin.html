@@ -18,15 +18,9 @@
     <meta name="google-site-verification" content="SvWQDf9XdCWUwmehzfvL2RAZi3ZCFaN2d16amNWD694" />
     <link rel="icon" type="image/png" href="img/favicon.png" />
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/flexboxgrid.min.css">
     <link rel="stylesheet" href="css/style_coin.css">
   </head>
   <body class="dashboard">
-    <div class="temporary">
-      <div class="box_data">
-        COMING SOON...
-      </div>
-    </div>
     <div class="mobile_menu_items">
       <div class="close_buttom">
         <img src="img/close.svg" alt="">
@@ -81,211 +75,199 @@
 
     <!-- DASHBOARD -->
     <div id="app">
-      <div class="top_block_divider">
+      <div class="block_container">
 
-      </div>
-
-      <div class="primary_container">
-        <div class="row">
-          <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
-            <div class="box blur">
-              <div class="description_coin">
-                MARKET CAP (USD)
-              </div>
-              <div class="data_coin">
-                355M
-              </div>
+        <div class="outer_box">
+          <div class="box block_plus">
+            <div class="description_coin">
+              MARKET CAP (USD)
+            </div>
+            <div class="data_coin">
+              355M
             </div>
           </div>
-          <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
-            <div class="box block_plus blur">
-              <div class="description_coin">
-                CURRENT COIN SUPPLY
-              </div>
-              <div class="data_coin">
-                643.6M
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
-            <div class="box block_minus blur">
-              <div class="description_coin">
-                COINS LOCKED
-              </div>
-              <div class="data_coin">
-                355M (58.93%)
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
-            <div class="box blur">
-              <div class="description_coin">
-                NODE WORTH
-              </div>
-              <div class="data_coin">
-                1.01 BTC / $3,7k
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
-            <div class="box blur">
-              <div class="description_coin">
-                Wallets
-              </div>
-              <div class="data_coin">
-                420
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
-            <div class="box blur">
-              <div class="description_coin">
-                dev fund
-              </div>
-              <div class="data_coin">
-                1560
-              </div>
-            </div>
-          </div>
-
-
-          <div class="col-xs-1">
-
-          </div>
-          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-            <div class="box_coin blur2">
-              <div class="description_coin">
-                TWINS Purchase price
-              </div>
-              <div class="logo_coin">
-                <img src="img/buy.svg" alt="">
-              </div>
-              <div class="price_btc">
-                <!-- 0.00000140 BTC <span class="span_divider"> - </span> <span class="persent persent_red">-8%</span> -->
-                0.00000140 BTC
-              </div>
-              <div class="price_usd">
-                $0.003716
-              </div>
-          </div>
-          </div>
-          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-            <div class="box_coin blur2">
-              <div class="description_coin">
-                TWINS selling price
-              </div>
-              <div class="logo_coin">
-                <img src="img/sell.svg" alt="">
-              </div>
-              <div class="price_btc">
-                0.00000148 BTC
-              </div>
-              <div class="price_usd">
-                $0.003716
-              </div>
-          </div>
-          </div>
-          <div class="col-xs-1">
-
-          </div>
-
-
-          <!-- <div class="col-xs-12">
-            <div class="graph">
-              <img src="img/graph.png" alt="">
-            </div>
-          </div> -->
-
-
-          <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <div class="box">
-              <div class="description_coin">
-                MAX Supply
-              </div>
-              <div class="data_coin">
-                100B $TWINS
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <div class="box">
-              <div class="description_coin">
-                Masternode reward (80%)
-              </div>
-              <div class="data_coin">
-                12176.56 $TWINS
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <div class="box">
-              <div class="description_coin">
-                staking reward (10%)
-              </div>
-              <div class="data_coin">
-                1522.07 $TWINS
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <div class="box">
-              <div class="description_coin">
-                dev fund (10%)
-              </div>
-              <div class="data_coin">
-                1522.07 $TWINS
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <div class="box">
-              <div class="description_coin">
-                Masternode Collateral
-              </div>
-              <div class="data_coin">
-                1M $TWINS
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <div class="box">
-              <div class="description_coin">
-                Maturity
-              </div>
-              <div class="data_coin">
-                60 Blocks
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-            <div class="box">
-              <div class="description_coin">
-                Block Time
-              </div>
-              <div class="data_coin">
-                120 Sec
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-            <div class="box">
-              <div class="description_coin">
-                Staking age (10%)
-              </div>
-              <div class="data_coin">
-                3 hours
-              </div>
-            </div>
-          </div>
-
-
         </div>
-      </div>
-      <div class="bottom_block_divider">
+
+        <div class="outer_box">
+          <div class="box block_minus">
+            <div class="description_coin">
+              CURRENT COIN SUPPLY
+            </div>
+            <div class="data_coin">
+              643.6M
+            </div>
+          </div>
+        </div>
+
+        <div class="outer_box">
+          <div class="box">
+            <div class="description_coin">
+              COINS LOCKED
+            </div>
+            <div class="data_coin">
+              355M (58.93%)
+            </div>
+          </div>
+        </div>
+
+        <div class="outer_box">
+          <div class="box">
+            <div class="description_coin">
+              NODE WORTH
+            </div>
+            <div class="data_coin">
+              1.01 BTC / $3,7k
+            </div>
+          </div>
+        </div>
+
+        <div class="outer_box">
+          <div class="box">
+            <div class="description_coin">
+              WALLETS
+            </div>
+            <div class="data_coin">
+              420
+            </div>
+          </div>
+        </div>
+
+        <div class="outer_box">
+          <div class="box">
+            <div class="description_coin">
+              DEV FUND
+            </div>
+            <div class="data_coin">
+              1560
+            </div>
+          </div>
+        </div>
 
       </div>
+      <div class="coin_data_block">
+        <div class="empty_box"></div>
+        <div class="box_coin box_coin_bottom">
+          <div class="description_coin">
+            TWINS Purchase price
+          </div>
+          <div class="logo_coin">
+            <img src="img/buy.svg" alt="">
+          </div>
+          <div class="price_btc">
+            0.00000140 BTC
+          </div>
+          <div class="price_usd">
+            $0.003716
+          </div>
+        </div>
+        <div class="box_coin">
+          <div class="description_coin">
+            TWINS selling price
+          </div>
+          <div class="logo_coin">
+            <img src="img/sell.svg" alt="">
+          </div>
+          <div class="price_btc">
+            0.00000148 BTC
+          </div>
+          <div class="price_usd">
+            $0.003716
+          </div>
+        </div>
+        <div class="empty_box"></div>
+      </div>
 
+      <div class="bottom_data_block">
+
+        <div class="outer_box bottom_block">
+          <div class="box">
+            <div class="description_coin">
+              MAX SUPPLY
+            </div>
+            <div class="data_coin">
+              100B $TWINS
+            </div>
+          </div>
+        </div>
+
+        <div class="outer_box bottom_block">
+          <div class="box">
+            <div class="description_coin">
+              MASTERNODE REWARD (80%)
+            </div>
+            <div class="data_coin">
+              12176.56 $TWINS
+            </div>
+          </div>
+        </div>
+
+        <div class="outer_box bottom_block">
+          <div class="box">
+            <div class="description_coin">
+              STAKING REWARD (10%)
+            </div>
+            <div class="data_coin">
+              1522.07 $TWINS
+            </div>
+          </div>
+        </div>
+
+        <div class="outer_box bottom_block">
+          <div class="box">
+            <div class="description_coin">
+              DEV FUND (10%)
+            </div>
+            <div class="data_coin">
+              1522.07 $TWINS
+            </div>
+          </div>
+        </div>
+
+        <div class="outer_box bottom_block">
+          <div class="box">
+            <div class="description_coin">
+              MASTERNODE COLLATERAL
+            </div>
+            <div class="data_coin">
+              1M $TWINS
+            </div>
+          </div>
+        </div>
+
+        <div class="outer_box bottom_block">
+          <div class="box">
+            <div class="description_coin">
+              MATURITY
+            </div>
+            <div class="data_coin">
+              60 Blocks
+            </div>
+          </div>
+        </div>
+
+        <div class="outer_box bottom_block">
+          <div class="box">
+            <div class="description_coin">
+              BLOCK TIME
+            </div>
+            <div class="data_coin">
+              120 Sec
+            </div>
+          </div>
+        </div>
+
+        <div class="outer_box bottom_block">
+          <div class="box">
+            <div class="description_coin">
+              STAKING AGE (10%)
+            </div>
+            <div class="data_coin">
+              3 hours
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
     <!-- END DASHBOARD -->
 
@@ -295,9 +277,6 @@
     <!-- js -->
     <!-- INCLUDE JS -->
     <script src="js/jquery-3.3.1.min.js" charset="utf-8"></script>
-    <script src="js/script2.js" charset="utf-8"></script>
-    <script src="js/vue.js" charset="utf-8"></script>
-    <script src="js/vue-resource.js" charset="utf-8"></script>
-    <script src="js/vue_script.js" charset="utf-8"></script>
+    <script src="js/script.js" charset="utf-8"></script>
   </body>
 </html>
