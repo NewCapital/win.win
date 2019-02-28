@@ -1,5 +1,74 @@
 $(document).ready(function() {
 
+  var twins_price_bid;
+  var old_twins_price_bid;
+
+  var twins_price_ask;
+  var old_twins_price_ask;
+
+  var btc_price;
+
+  var active_wallets_count;
+  var old_active_wallets_count;
+
+  var dev_wallet_balance;
+  var old_dev_wallet_balance;
+
+  var money_supply;
+  var old_money_supply;
+
+  var twins_locked;
+  var old_twins_locked;
+
+  function getExplorerData() {
+    $.ajax({
+      url: 'https://explorer.win.win/ext/getstats',
+      success: function(data) {
+        active_wallets_count = data.active_wallets_count;
+        $('#active_wallets .data_coin').html(active_wallets_count);
+
+        dev_wallet_balance = (data.dev_wallet_balance / 1000000).toFixed(3);
+        $('#dev_fund .data_coin').html(dev_wallet_balance + "M");
+
+        money_supply = (data.money_supply / 1000000).toFixed(3);
+        $('#coin_supply .data_coin').html(money_supply + "M");
+
+        twins_locked = data.twins_locked;
+        $('#coin_locked .data_coin').html(twins_locked + "M");
+
+        $('#node_worth .data_coin').html("$" + 1000000 * btc_price * twins_price_bid);
+        $('#market_cap .data_coin').html("$" + (money_supply * btc_price * twins_price_bid).toFixed(3) + "M");
+
+      },
+      complete: function() {
+        setTimeout(getExplorerData, 10000);
+      }
+    });
+  }
+  function getExchangeData() {
+    $.ajax({
+      url: 'https://bitsane.com/api/public/ticker',
+      success: function(data) {
+        console.log(data.BTC_USD);
+        btc_price = data.BTC_USD.highestBid;
+
+        twins_price_bid = data.TWINS_BTC.highestBid;
+        $('#twins_bid .price_btc').html(twins_price_bid + " BTC");
+        $('#twins_bid .price_usd').html("$" + twins_price_bid * btc_price);
+
+        twins_price_ask = data.TWINS_BTC.lowestAsk
+        $('#twins_ask .price_btc').html(twins_price_ask + " BTC");
+        $('#twins_ask .price_usd').html("$" + twins_price_ask * btc_price);
+
+      },
+      complete: function() {
+        setTimeout(getExchangeData, 10000);
+      }
+    });
+  }
+  getExplorerData();
+  getExchangeData();
+
   // ---------------------------------------------------------------------------
   // set variables
   var viewPortWidth;
@@ -51,7 +120,6 @@ $(document).ready(function() {
     $.ajax({
       url: 'https://explorer.win.win/ext/getstats',
       success: function(data) {
-        console.log(data);
         $('#total_wallets_count').html(data.total_wallets_count);
         $('#active_wallets_count').html(data.active_wallets_count);
         $('#money_supply').html(numberWithSpaces(data.money_supply.toFixed()));
