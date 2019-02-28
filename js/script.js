@@ -30,6 +30,7 @@ $(document).ready(function() {
     $.ajax({
       url: 'https://explorer.win.win/ext/getstats',
       success: function(data) {
+        console.log(data);
         active_wallets_count = data.active_wallets_count;
         $('#active_wallets .data_coin').html(active_wallets_count);
 
@@ -39,8 +40,8 @@ $(document).ready(function() {
         money_supply = (data.money_supply / 1000000).toFixed(3);
         $('#coin_supply .data_coin').html(money_supply + "M");
 
-        twins_locked = data.twins_locked;
-        $('#coin_locked .data_coin').html(twins_locked + "M");
+        twins_locked = data.masternode_count;
+        $('#coin_locked .data_coin').html(twins_locked + "M" + " (" + (twins_locked / money_supply * 100).toFixed(2) + "%)");
 
 
         node_worth = 1000000 * btc_price * twins_price_bid;
