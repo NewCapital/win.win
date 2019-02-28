@@ -176,12 +176,12 @@ $(document).ready(function() {
         btc_price = data.BTC_USD.highestBid;
 
         twins_price_bid = data.TWINS_BTC.highestBid;
-        $('#twins_bid .price_btc').html(twins_price_bid + " BTC");
-        $('#twins_bid .price_usd').html("$" + twins_price_bid * btc_price);
+        $('#twins_ask .price_btc').html(twins_price_bid + " BTC");
+        $('#twins_ask .price_usd').html("$" + twins_price_bid * btc_price);
 
         twins_price_ask = data.TWINS_BTC.lowestAsk
-        $('#twins_ask .price_btc').html(twins_price_ask + " BTC");
-        $('#twins_ask .price_usd').html("$" + twins_price_ask * btc_price);
+        $('#twins_bid .price_btc').html(twins_price_ask + " BTC");
+        $('#twins_bid .price_usd').html("$" + twins_price_ask * btc_price);
 
 
         // twins_price_ask indication
@@ -190,15 +190,15 @@ $(document).ready(function() {
         } else {
           if (twins_price_ask > old_twins_price_ask) {
             old_twins_price_ask = twins_price_ask;
-            $('#twins_ask').addClass('block_plus');
+            $('#twins_bid').addClass('block_plus');
             setTimeout(function() {
-              $('#twins_ask').removeClass('block_plus');
+              $('#twins_bid').removeClass('block_plus');
             }, 1000);
           } else if (twins_price_ask < old_twins_price_ask) {
             old_twins_price_ask = twins_price_ask;
-            $('#twins_ask').addClass('block_minus');
+            $('#twins_bid').addClass('block_minus');
             setTimeout(function() {
-              $('#twins_ask').removeClass('block_minus');
+              $('#twins_bid').removeClass('block_minus');
             }, 1000);
           }
         }
@@ -210,15 +210,15 @@ $(document).ready(function() {
         } else {
           if (twins_price_bid > old_twins_price_bid) {
             old_twins_price_bid = twins_price_bid;
-            $('#twins_bid').addClass('block_plus');
+            $('#twins_ask').addClass('block_plus');
             setTimeout(function() {
-              $('#twins_bid').removeClass('block_plus');
+              $('#twins_ask').removeClass('block_plus');
             }, 1000);
           } else if (twins_price_bid < old_twins_price_bid) {
             old_twins_price_bid = twins_price_bid;
-            $('#twins_bid').addClass('block_minus');
+            $('#twins_ask').addClass('block_minus');
             setTimeout(function() {
-              $('#twins_bid').removeClass('block_minus');
+              $('#twins_ask').removeClass('block_minus');
             }, 1000);
           }
         }
