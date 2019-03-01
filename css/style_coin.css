@@ -1,195 +1,3 @@
-/* COIN INFO CSS ------------------------------------------------------------ */
-.dashboard {
-  background-color: #101112;
-  color: #ffffff;
-  background-image: url(../img/graph_bg.png);
-  background-position: center bottom;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.main_menu_coin_info {
-  position: fixed;
-  bottom: 0px;
-  width: 100%;
-}
-.primary_container {
-
-}
-.coin_info {
-  cursor: pointer;
-}
-.row {
-  margin-left: 0rem!important;
-  margin-right: 0rem!important;
-}
-.box {
-  margin-top: 16px;
-  padding: 20px;
-  background: #0D0D0E;
-  border: 2px solid #1A1C1E;
-  border-radius: 4px;
-  text-align: center;
-  color:#ffffff;
-  font-family: verdana;
-  transition: background 0.3s, border 0.3s;
-}
-.box_coin {
-  margin-top: 16px;
-  padding: 20px;
-  background: rgba(0, 0, 0, 0);
-  border: 2px solid rgba(0, 0, 0, 0);
-  border-radius: 4px;
-  text-align: center;
-  color:#ffffff;
-  font-family: verdana;
-  transition: background 0.3s, border 0.3s;
-  margin-top: 120px;
-  margin-bottom: 120px;
-}
-.block_plus {
-  background: rgba(75,171,62,0.20);
-  border: 2px solid #4BAB3E;
-  border-radius: 4px;
-  background-image: url(../img/inc.svg);
-  background-repeat: no-repeat;
-  background-position: right bottom;
-}
-
-.block_minus {
-  background: rgba(238,96,86,0.20);
-  border: 2px solid #EE6056;
-  border-radius: 4px;
-  background-image: url(../img/dec.svg);
-  background-repeat: no-repeat;
-  background-position: right bottom;
-}
-.description_coin {
-  color: #868686;
-  text-transform: uppercase;
-  line-height: 24px;
-  font-size: 16px;
-
-}
-.data_coin {
-  color: #ffffff;
-  line-height: 32px;
-  font-size: 22px;
-  margin-top: 4px;
-}
-.description_coin {
-  color: #868686;
-  text-transform: uppercase;
-  line-height: 24px;
-  font-size: 16px;
-
-}
-.data_coin {
-  color: #ffffff;
-  line-height: 32px;
-  font-size: 22px;
-  margin-top: 4px;
-}
-.twins_info {
-  margin-top: 40px;
-}
-.price_btc {
-  color: #ffffff;
-  line-height: 64px;
-  font-size: 40px;
-}
-.price_usd {
-  color: #868686;
-  line-height: 32px;
-  font-size: 24px;
-}
-.span_divider {
-  color: #868686;
-}
-.persent {
-  line-height: 64px;
-  font-size: 32px;
-}
-.persent_red {
-  color: #EE6056;
-}
-.graph {
-  height: 270px;
-}
-.graph img {
-    width: 100%;
-    height: 100%;
-}
-.logo_coin {
-  margin-top: 24px;
-}
-.bottom_block_divider {
-  height: 60px;
-}
-.top_block_divider {
-  height: 0px;
-}
-.blur {
-  filter: blur(4px);
-}
-.blur2 {
-  filter: blur(8px);
-}
-.temporary {
-  position: absolute;
-  width: 100%;
-  height: 90%;
-  z-index: 100500;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.box_data {
-  background-color: rgba(255,255,255,.1);
-  padding: 10px 20px;
-  border-radius: 100px;
-  margin-top: -80px;
-}
-
-/* MEDIA */
-@media (max-width: 1800px) {
-  .box {
-    padding: 8px;
-  }
-  .description_coin {
-    line-height: 18px;
-    font-size: 12px;
-  }
-  .data_coin {
-    line-height: 32px;
-    font-size: 18px;
-    margin-top: 4px;
-  }
-  .top_block_divider {
-    height: 30px;
-  }
-}
-
-@media (max-width: 1500px) {
-  .data_coin {
-    line-height: 32px;
-    font-size: 16px;
-    margin-top: 4px;
-  }
-}
-@media (max-width: 1200px) {
-  .box_coin {
-    margin-top: 40px;
-    margin-bottom: 40px;
-  }
-}
-
-@media (max-width: 760px) {
-  .blur, .blur2, .temporary {
-    display: none;
-  }
-}
-
-
 /* IMPORT FONTS ------------------------------------------------------------- */
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
 
@@ -216,6 +24,7 @@ html {
   background-color: #000000;
   padding: 12px 18px;
   box-sizing: border-box;
+  z-index: 100500;
 }
 
 .main_menu::after {
@@ -229,12 +38,12 @@ html {
   float: left;
 }
 
-.fixed {
+/* .fixed {
   position: fixed;
   top: 0;
   z-index: 2;
   width: 100%;
-}
+} */
 
 .fixed_add {
   position: fixed;
@@ -437,5 +246,192 @@ html {
   }
   .small_divider {
     display: none;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+
+/* COIN INFO CSS ------------------------------------------------------------ */
+#app {
+  display: flex;
+  flex-direction: column;
+}
+.main_menu_coin_info {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+}
+.dashboard {
+  background-color: #101112;
+  color: #ffffff;
+}
+.block_container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.outer_box {
+  flex: 1 0 0;
+  padding: 8px;
+}
+.box {
+  padding: 24px;
+  background: #0D0D0E;
+  border: 2px solid #1A1C1E;
+  border-radius: 4px;
+  text-align: center;
+  color:#ffffff;
+  transition: background 0.3s, border 0.3s;
+}
+.description_coin {
+  color: #868686;
+  text-transform: uppercase;
+  line-height: 24px;
+  font-size: 16px;
+
+}
+.data_coin {
+  color: #ffffff;
+  line-height: 32px;
+  font-size: 22px;
+  margin-top: 4px;
+}
+.block_plus {
+  background: rgba(75,171,62,0.20);
+  border: 2px solid #4BAB3E;
+  border-radius: 4px;
+  background-image: url(../img/inc.svg);
+  background-repeat: no-repeat;
+  background-position: right bottom;
+}
+
+.block_minus {
+  background: rgba(238,96,86,0.20);
+  border: 2px solid #EE6056;
+  border-radius: 4px;
+  background-image: url(../img/dec.svg);
+  background-repeat: no-repeat;
+  background-position: right bottom;
+}
+
+
+.coin_data_block {
+  display: flex;
+  margin-top: 10%;
+}
+.box_coin {
+  flex: 2 0 0;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.empty_box {
+  flex: 1 0 0;
+}
+.price_btc {
+  color: #ffffff;
+  line-height: 64px;
+  font-size: 40px;
+}
+.price_usd {
+  color: #868686;
+  line-height: 32px;
+  font-size: 24px;
+}
+
+
+.bottom_data_block {
+  display: flex;
+  flex-wrap: wrap;
+  position: fixed;
+  bottom: 56px;
+  width: 100%;
+}
+.bottom_block {
+  flex-basis: 400px;
+}
+
+
+@media (max-width: 1680px) {
+  .description_coin {
+    line-height: 24px;
+    font-size: 14px;
+
+  }
+  .data_coin {
+    color: #ffffff;
+    line-height: 32px;
+    font-size: 18px;
+    margin-top: 0px;
+  }
+  .box {
+    padding: 16px;
+  }
+}
+@media (max-width: 1300px) {
+  .description_coin {
+    line-height: 18px;
+    font-size: 12px;
+
+  }
+  .data_coin {
+    color: #ffffff;
+    line-height: 32px;
+    font-size: 16px;
+    margin-top: 0px;
+  }
+  .box {
+    padding: 12px;
+  }
+  .bottom_data_block {
+    position:relative;
+    bottom: auto;
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+  .price_btc {
+    color: #ffffff;
+    line-height: 64px;
+    font-size: 32px;
+  }
+}
+@media (max-width: 1100px) {
+  .outer_box {
+    flex-basis: 300px;
+  }
+  .outer_box {
+    padding: 4px;
+  }
+}
+@media (max-width: 960px) {
+  .outer_box {
+    flex-basis: 250px;
+  }
+  .box_coin {
+    flex: 1 0 0;
+  }
+  .empty_box {
+    flex: 0 0 0;
+  }
+}
+@media (max-width: 580px) {
+  .coin_data_block {
+    flex-direction: column;
+  }
+  .box_coin_bottom {
+    margin-bottom: 80px;
+  }
+  .block_container {
+    order: 2;
+  }
+  .coin_data_block {
+    order: 1;
+    margin-bottom: 80px;
+  }
+  .bottom_data_block {
+    order: 3;
+    margin-top: 40px;
   }
 }

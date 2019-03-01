@@ -1,5 +1,238 @@
 $(document).ready(function() {
 
+  var twins_price_bid;
+  var old_twins_price_bid;
+
+  var twins_price_ask;
+  var old_twins_price_ask;
+
+  var btc_price;
+
+  var active_wallets_count;
+  var old_active_wallets_count;
+
+  var dev_wallet_balance;
+  var old_dev_wallet_balance;
+
+  var money_supply;
+  var old_money_supply;
+
+  var twins_locked;
+  var old_twins_locked;
+
+  var node_worth;
+  var old_node_worth;
+
+  var market_cap;
+  var old_market_cap;
+
+  function getExplorerData() {
+    $.ajax({
+      url: 'https://explorer.win.win/ext/getstats',
+      success: function(data) {
+        console.log(data);
+        active_wallets_count = data.active_wallets_count;
+        $('#active_wallets .data_coin').html(active_wallets_count);
+
+        dev_wallet_balance = (data.dev_wallet_balance / 1000000).toFixed(3);
+        $('#dev_fund .data_coin').html(dev_wallet_balance + "M");
+
+        money_supply = (data.money_supply / 1000000).toFixed(3);
+        $('#coin_supply .data_coin').html(money_supply + "M");
+
+        twins_locked = data.masternode_count;
+        $('#coin_locked .data_coin').html(twins_locked + "M" + " (" + (twins_locked / money_supply * 100).toFixed(2) + "%)");
+
+
+        node_worth = 1000000 * btc_price * twins_price_bid;
+        $('#node_worth .data_coin').html("$" + node_worth);
+
+        market_cap = (money_supply * btc_price * twins_price_bid).toFixed(3);
+        $('#market_cap .data_coin').html("$" + market_cap + "M");
+
+        // market_cap indication
+        if (!old_market_cap) {
+          old_market_cap = market_cap;
+        } else {
+          if (market_cap > old_market_cap) {
+            old_market_cap = market_cap;
+            $('#market_cap').addClass('block_plus');
+            setTimeout(function() {
+              $('#market_cap').removeClass('block_plus');
+            }, 1000);
+          } else if (market_cap < old_market_cap) {
+            old_market_cap = market_cap;
+            $('#market_cap').addClass('block_minus');
+            setTimeout(function() {
+              $('#market_cap').removeClass('block_minus');
+            }, 1000);
+          }
+        }
+
+        // node_worth indication
+        if (!old_node_worth) {
+          old_node_worth = node_worth;
+        } else {
+          if (node_worth > old_node_worth) {
+            old_node_worth = node_worth;
+            $('#node_worth').addClass('block_plus');
+            setTimeout(function() {
+              $('#node_worth').removeClass('block_plus');
+            }, 1000);
+          } else if (node_worth < old_node_worth) {
+            old_node_worth = node_worth;
+            $('#node_worth').addClass('block_minus');
+            setTimeout(function() {
+              $('#node_worth').removeClass('block_minus');
+            }, 1000);
+          }
+        }
+
+        // twins_locked indication
+        if (!old_twins_locked) {
+          old_twins_locked = twins_locked;
+        } else {
+          if (twins_locked > old_twins_locked) {
+            old_twins_locked = twins_locked;
+            $('#coin_locked').addClass('block_plus');
+            setTimeout(function() {
+              $('#coin_locked').removeClass('block_plus');
+            }, 1000);
+          } else if (twins_locked < old_twins_locked) {
+            old_twins_locked = twins_locked;
+            $('#coin_locked').addClass('block_minus');
+            setTimeout(function() {
+              $('#coin_locked').removeClass('block_minus');
+            }, 1000);
+          }
+        }
+
+        // dev_wallet_balance indication
+        if (!old_dev_wallet_balance) {
+          old_dev_wallet_balance = dev_wallet_balance;
+        } else {
+          if (dev_wallet_balance > old_dev_wallet_balance) {
+            old_dev_wallet_balance = dev_wallet_balance;
+            $('#dev_fund').addClass('block_plus');
+            setTimeout(function() {
+              $('#dev_fund').removeClass('block_plus');
+            }, 1000);
+          } else if (dev_wallet_balance < old_dev_wallet_balance) {
+            old_dev_wallet_balance = dev_wallet_balance;
+            $('#dev_fund').addClass('block_minus');
+            setTimeout(function() {
+              $('#dev_fund').removeClass('block_minus');
+            }, 1000);
+          }
+        }
+
+        // active_wallets_count indication
+        if (!old_active_wallets_count) {
+          old_active_wallets_count = active_wallets_count;
+        } else {
+          if (active_wallets_count > old_active_wallets_count) {
+            old_active_wallets_count = active_wallets_count;
+            $('#active_wallets').addClass('block_plus');
+            setTimeout(function() {
+              $('#active_wallets').removeClass('block_plus');
+            }, 1000);
+          } else if (active_wallets_count < old_active_wallets_count) {
+            old_active_wallets_count = active_wallets_count;
+            $('#active_wallets').addClass('block_minus');
+            setTimeout(function() {
+              $('#active_wallets').removeClass('block_minus');
+            }, 1000);
+          }
+        }
+
+        // money_supply indication
+        if (!old_money_supply) {
+          old_money_supply = money_supply;
+        } else {
+          if (money_supply > old_money_supply) {
+            old_money_supply = money_supply;
+            $('#coin_supply').addClass('block_plus');
+            setTimeout(function() {
+              $('#coin_supply').removeClass('block_plus');
+            }, 1000);
+          } else if (money_supply < old_money_supply) {
+            old_money_supply = money_supply;
+            $('#coin_supply').addClass('block_minus');
+            setTimeout(function() {
+              $('#coin_supply').removeClass('block_minus');
+            }, 1000);
+          }
+        }
+
+      },
+      complete: function() {
+        setTimeout(getExplorerData, 10000);
+      }
+    });
+  }
+  function getExchangeData() {
+    $.ajax({
+      url: 'https://bitsane.com/api/public/ticker',
+      success: function(data) {
+        btc_price = data.BTC_USD.highestBid;
+
+        twins_price_bid = data.TWINS_BTC.highestBid;
+        $('#twins_ask .price_btc').html(twins_price_bid + " BTC");
+        $('#twins_ask .price_usd').html("$" + twins_price_bid * btc_price);
+
+        twins_price_ask = data.TWINS_BTC.lowestAsk
+        $('#twins_bid .price_btc').html(twins_price_ask + " BTC");
+        $('#twins_bid .price_usd').html("$" + twins_price_ask * btc_price);
+
+
+        // twins_price_ask indication
+        if (!old_twins_price_ask) {
+          old_twins_price_ask = twins_price_ask;
+        } else {
+          if (twins_price_ask > old_twins_price_ask) {
+            old_twins_price_ask = twins_price_ask;
+            $('#twins_bid').addClass('block_plus');
+            setTimeout(function() {
+              $('#twins_bid').removeClass('block_plus');
+            }, 1000);
+          } else if (twins_price_ask < old_twins_price_ask) {
+            old_twins_price_ask = twins_price_ask;
+            $('#twins_bid').addClass('block_minus');
+            setTimeout(function() {
+              $('#twins_bid').removeClass('block_minus');
+            }, 1000);
+          }
+        }
+
+
+        // twins_price_bid indication
+        if (!old_twins_price_bid) {
+          old_twins_price_bid = twins_price_bid;
+        } else {
+          if (twins_price_bid > old_twins_price_bid) {
+            old_twins_price_bid = twins_price_bid;
+            $('#twins_ask').addClass('block_plus');
+            setTimeout(function() {
+              $('#twins_ask').removeClass('block_plus');
+            }, 1000);
+          } else if (twins_price_bid < old_twins_price_bid) {
+            old_twins_price_bid = twins_price_bid;
+            $('#twins_ask').addClass('block_minus');
+            setTimeout(function() {
+              $('#twins_ask').removeClass('block_minus');
+            }, 1000);
+          }
+        }
+
+      },
+      complete: function() {
+        setTimeout(getExchangeData, 10000);
+      }
+    });
+  }
+  getExplorerData();
+  getExchangeData();
+
   // ---------------------------------------------------------------------------
   // set variables
   var viewPortWidth;
@@ -51,7 +284,6 @@ $(document).ready(function() {
     $.ajax({
       url: 'https://explorer.win.win/ext/getstats',
       success: function(data) {
-        console.log(data);
         $('#total_wallets_count').html(data.total_wallets_count);
         $('#active_wallets_count').html(data.active_wallets_count);
         $('#money_supply').html(numberWithSpaces(data.money_supply.toFixed()));
