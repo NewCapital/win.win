@@ -30,7 +30,6 @@ $(document).ready(function() {
     $.ajax({
       url: 'https://explorer.win.win/ext/getstats',
       success: function(data) {
-        console.log(data);
         active_wallets_count = data.active_wallets_count;
         $('#active_wallets .data_coin').html(active_wallets_count);
 
@@ -44,10 +43,10 @@ $(document).ready(function() {
         $('#coin_locked .data_coin').html(twins_locked + "M" + " (" + (twins_locked / money_supply * 100).toFixed(2) + "%)");
 
 
-        node_worth = 1000000 * btc_price * twins_price_bid;
-        $('#node_worth .data_coin').html("$" + node_worth);
+        node_worth = 1000000 * btc_price;
+        $('#node_worth .data_coin').html("$" + node_worth.toFixed(2));
 
-        market_cap = (money_supply * btc_price * twins_price_bid).toFixed(3);
+        market_cap = (money_supply * btc_price).toFixed(3);
         $('#market_cap .data_coin').html("$" + market_cap + "M");
 
         // market_cap indication
@@ -172,17 +171,19 @@ $(document).ready(function() {
   }
   function getExchangeData() {
     $.ajax({
-      url: 'https://bitsane.com/api/public/ticker',
+      url: 'https://explorer.win.win/ext/getMarketLatestData/bitsane',
       success: function(data) {
-        btc_price = data.BTC_USD.highestBid;
 
-        twins_price_bid = data.TWINS_BTC.highestBid;
+        btc_price = Number(data.price_usd);
+
+        twins_price_bid = Number(data.highestBid);
+
         $('#twins_ask .price_btc').html(twins_price_bid + " BTC");
-        $('#twins_ask .price_usd').html("$" + twins_price_bid * btc_price);
+        $('#twins_ask .price_usd').html("$" + btc_price.toFixed(6));
 
-        twins_price_ask = data.TWINS_BTC.lowestAsk
+        twins_price_ask = Number(data.lowestAsk);
         $('#twins_bid .price_btc').html(twins_price_ask + " BTC");
-        $('#twins_bid .price_usd').html("$" + twins_price_ask * btc_price);
+        $('#twins_bid .price_usd').html("$" + btc_price.toFixed(6));
 
 
         // twins_price_ask indication
