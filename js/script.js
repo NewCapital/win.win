@@ -32,7 +32,7 @@ $(document).ready(function() {
       success: function(data) {
         active_wallets_count = data.active_wallets_count;
         var total_wallets = data.total_wallets_count;
-        $('#active_wallets .data_coin').html(total_wallets + " / " + active_wallets_count);
+        $('#active_wallets .data_coin').html(active_wallets_count + " / " + total_wallets);
 
         dev_wallet_balance = (data.dev_wallet_balance / 1000000).toFixed(3);
         $('#dev_fund .data_coin').html(dev_wallet_balance + "M");
