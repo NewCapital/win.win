@@ -31,7 +31,8 @@ $(document).ready(function() {
       url: 'https://explorer.win.win/ext/getstats',
       success: function(data) {
         active_wallets_count = data.active_wallets_count;
-        $('#active_wallets .data_coin').html(active_wallets_count);
+        var total_wallets = data.total_wallets_count;
+        $('#active_wallets .data_coin').html(total_wallets + " / " + active_wallets_count);
 
         dev_wallet_balance = (data.dev_wallet_balance / 1000000).toFixed(3);
         $('#dev_fund .data_coin').html(dev_wallet_balance + "M");
@@ -176,14 +177,14 @@ $(document).ready(function() {
 
         btc_price = Number(data.price_usd);
 
-        twins_price_bid = Number(data.highestBid);
+        twins_price_bid = Number(data.lowestAsk);
 
         $('#twins_ask .price_btc').html(twins_price_bid + " BTC");
-        $('#twins_ask .price_usd').html("$" + btc_price.toFixed(6));
-
-        twins_price_ask = Number(data.lowestAsk);
-        $('#twins_bid .price_btc').html(twins_price_ask + " BTC");
         $('#twins_bid .price_usd').html("$" + btc_price.toFixed(6));
+
+        twins_price_ask = Number(data.highestBid);
+        $('#twins_bid .price_btc').html(twins_price_ask + " BTC");
+        $('#twins_ask .price_usd').html("$" + (btc_price * twins_price_bid / twins_price_ask).toFixed(6));
 
 
         // twins_price_ask indication
