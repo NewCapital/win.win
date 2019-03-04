@@ -26,6 +26,8 @@ $(document).ready(function() {
   var market_cap;
   var old_market_cap;
 
+  var blockTimeCoin;
+
   function getExplorerData() {
     $.ajax({
       url: 'https://explorer.win.win/ext/getstats',
@@ -49,6 +51,10 @@ $(document).ready(function() {
 
         market_cap = (money_supply * btc_price).toFixed(3);
         $('#market_cap .data_coin').html("$" + market_cap + "M");
+
+        blockTimeCoin = data.average_sec_per_block;
+        $('#block_time .data_coin').html(blockTimeCoin.toFixed(2) + " Sec");
+
 
         // market_cap indication
         if (!old_market_cap) {
