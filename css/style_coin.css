@@ -350,7 +350,7 @@ html {
   width: 100%;
 }
 .bottom_block {
-  flex-basis: 400px;
+  flex-basis: 340px;
 }
 
 
@@ -376,6 +376,9 @@ html {
     font-size: 12px;
 
   }
+  .bottom_block {
+    flex-basis: 240px;
+  }
   .data_coin {
     color: #ffffff;
     line-height: 32px;
@@ -395,6 +398,14 @@ html {
     color: #ffffff;
     line-height: 64px;
     font-size: 32px;
+  }
+}
+@media (max-height: 860px) {
+  .bottom_data_block {
+    position:relative;
+    bottom: auto;
+    margin-top: 80px;
+    margin-bottom: 80px;
   }
 }
 @media (max-width: 1100px) {
