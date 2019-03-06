@@ -214,12 +214,24 @@ h2 {
 .menu_items ul li {
   position: relative;
 }
+.menu_items ul li.menu-dropdown {
+  margin-right: 24px;
+}
 .menu_items ul li.menu-dropdown::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 200px;
+  width: 100%;
+  height: calc(100% + 23px);
+  z-index: 0;
+}
+.menu_items ul li.menu-dropdown::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   height: calc(100% + 23px);
   z-index: 0;
 }
