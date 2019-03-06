@@ -185,11 +185,11 @@ $(document).ready(function() {
 
         twins_price_bid = Number(data.lowestAsk);
 
-        $('#twins_ask .price_btc').html(twins_price_bid + " BTC");
+        $('#twins_ask .price_btc').html(twins_price_bid.toFixed(8) + " BTC");
         $('#twins_bid .price_usd').html("$" + btc_price.toFixed(6));
 
         twins_price_ask = Number(data.highestBid);
-        $('#twins_bid .price_btc').html(twins_price_ask + " BTC");
+        $('#twins_bid .price_btc').html(twins_price_ask.toFixed(8) + " BTC");
         $('#twins_ask .price_usd').html("$" + (btc_price * twins_price_bid / twins_price_ask).toFixed(6));
 
 
