@@ -185,11 +185,11 @@ $(document).ready(function() {
 
         twins_price_bid = Number(data.lowestAsk);
 
-        $('#twins_ask .price_btc').html(twins_price_bid + " BTC");
+        $('#twins_ask .price_btc').html(twins_price_bid.toFixed(8) + " BTC");
         $('#twins_bid .price_usd').html("$" + btc_price.toFixed(6));
 
         twins_price_ask = Number(data.highestBid);
-        $('#twins_bid .price_btc').html(twins_price_ask + " BTC");
+        $('#twins_bid .price_btc').html(twins_price_ask.toFixed(8) + " BTC");
         $('#twins_ask .price_usd').html("$" + (btc_price * twins_price_bid / twins_price_ask).toFixed(6));
 
 
@@ -281,10 +281,6 @@ $(document).ready(function() {
 
   $('.mobile_button').on('click', function() {
     $('.mobile_menu_items').slideDown();
-  });
-
-  $('.mobile_menu_items').on('click', function() {
-    $(this).slideUp();
   });
 
   // get periodic statistics
@@ -386,6 +382,45 @@ $(document).ready(function() {
     if (!$(event.target).closest(".wallet_logo_block").length) {
       $('.dropdown').fadeOut('fast');
       $('.wallet_container').removeClass('wallet_container_selected');
+    }
+  });
+});
+
+// menu dropdown
+$(document).ready(function() {
+  if ($(window).width() <= 720) { return false; }
+
+  var target = $('.menu-dropdown');
+  target.on('mousemove', function() {
+    var windowHeight = $(window).height();
+    var scrollTop = $(window).scrollTop();
+    var targetEl = $(this).find('.menu_items-dropdown');
+    var targetHeight = targetEl.height();
+    var targetOffsetTop = targetEl.offset().top;
+
+    if ((scrollTop + windowHeight) > (targetHeight + targetOffsetTop)) {
+      $(targetEl).addClass('down');
+    } else {
+      $(targetEl).addClass('up');
+    }
+  });
+  target.on('mouseleave', function() {
+    var targetEl = $(this).find('.menu_items-dropdown');
+    if (targetEl.hasClass('down')) { targetEl.removeClass('down'); }
+    if (targetEl.hasClass('up')) { targetEl.removeClass('up'); }
+  })
+});
+
+// menu dropdown mobile
+$(document).ready(function() {
+  var target = $('.mobile_menu_items .menu-dropdown .menu-opener');
+
+  target.on('click', function() {
+    var managedItem = $(this).closest('.menu-dropdown');
+    if (!managedItem.hasClass('open')) {
+      managedItem.addClass('open');
+    } else {
+      managedItem.removeClass('open');
     }
   });
 });

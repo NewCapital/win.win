@@ -202,7 +202,7 @@ html {
 
 
 
-@media (max-width: 800px) {
+@media (max-width: 860px) {
   .menu_items ul {
     display: none;
   }
