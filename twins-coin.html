@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="css/style_coin.css">
   </head>
   <body class="dashboard">
+
+    <!-- menu -->
+
     <div class="mobile_menu_items">
       <div class="close_buttom">
         <img src="img/close.svg" alt="">
@@ -70,212 +73,167 @@
       </div>
     </section>
 
+    <!-- - -------------------------------------------------------------------->
 
-
-
-    <!-- DASHBOARD -->
-    <div id="app">
-      <div class="block_container">
-
-        <div class="outer_box">
-          <div id="market_cap" class="box">
-            <div class="description_coin">
-              MARKET CAP (USD)
-            </div>
-            <div class="data_coin">
-              ---
-            </div>
-          </div>
-        </div>
-
-        <div class="outer_box">
-          <div id="coin_supply" class="box">
-            <div class="description_coin">
-              CURRENT COIN SUPPLY
-            </div>
-            <div class="data_coin">
-              ---
-            </div>
-          </div>
-        </div>
-
-        <div class="outer_box">
-          <div id="coin_locked" class="box">
-            <div class="description_coin">
-              COINS LOCKED
-            </div>
-            <div class="data_coin">
-              ---
-            </div>
-          </div>
-        </div>
-
-        <div class="outer_box">
-          <div id="node_worth" class="box">
-            <div class="description_coin">
-              NODE WORTH
-            </div>
-            <div class="data_coin">
-              ---
-            </div>
-          </div>
-        </div>
-
-        <div class="outer_box">
-          <div id="active_wallets" class="box">
-            <div class="description_coin">
-              ACTIVE / TOTAL WALLETS
-            </div>
-            <div class="data_coin">
-              ---
-            </div>
-          </div>
-        </div>
-
-        <div class="outer_box">
-          <div id="dev_fund" class="box">
-            <div class="description_coin">
-              DEV FUND
-            </div>
-            <div class="data_coin">
-              ---
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <div class="coin_data_block">
-        <div class="empty_box"></div>
-        <div id="twins_bid" class="box_coin box_coin_bottom">
+    <div class="app">
+      <div class="top_container">
+        <div id="market_cap" class="block_box">
           <div class="description_coin">
-            BUY PRICE
+            MARKET CAP (USD)
           </div>
-          <div class="logo_coin">
-            <img src="img/buy.svg" alt="">
-          </div>
-          <div class="price_btc">
-            ---
-          </div>
-          <div class="price_usd">
+          <div class="data_coin">
             ---
           </div>
         </div>
-        <div id="twins_ask" class="box_coin">
+        <div id="coin_supply" class="block_box">
           <div class="description_coin">
-            SELL PRICE
+            CURRENT COIN SUPPLY
           </div>
-          <div class="logo_coin">
-            <img src="img/sell.svg" alt="">
-          </div>
-          <div class="price_btc">
-            ---
-          </div>
-          <div class="price_usd">
+          <div class="data_coin">
             ---
           </div>
         </div>
-        <div class="empty_box"></div>
+        <div id="coin_locked" class="block_box">
+          <div class="description_coin">
+            COINS LOCKED
+          </div>
+          <div class="data_coin">
+            ---
+          </div>
+        </div>
+        <div id="node_worth" class="block_box">
+          <div class="description_coin">
+            NODE WORTH
+          </div>
+          <div class="data_coin">
+            ---
+          </div>
+        </div>
+        <div id="active_wallets" class="block_box">
+          <div class="description_coin">
+            ACTIVE / TOTAL WALLETS
+          </div>
+          <div class="data_coin">
+            ---
+          </div>
+        </div>
+        <div id="dev_fund" class="block_box">
+          <div class="description_coin">
+            DEV FUND
+          </div>
+          <div class="data_coin">
+            ---
+          </div>
+        </div>
       </div>
-
-      <div class="bottom_data_block">
-
-        <div class="outer_box bottom_block">
-          <div class="box">
+      <div class="main_tab_content">
+        <div class="coin_info_tab">
+          <div class="empty_box"></div>
+          <div id="twins_bid" class="box_coin">
             <div class="description_coin">
-              MAX SUPPLY
+
+              BUY PRICE
             </div>
-            <div class="data_coin">
-              100B $TWINS
+            <div class="logo_coin">
+              <img src="img/buy.svg" alt="">
+            </div>
+            <div class="price_btc">
+              ---
+            </div>
+            <div class="price_usd">
+              ---
             </div>
           </div>
-        </div>
-
-        <div class="outer_box bottom_block">
-          <div class="box">
+          <div id="twins_ask" class="box_coin">
             <div class="description_coin">
-              MASTERNODE REWARD (80%)
+              SELL PRICE
             </div>
-            <div class="data_coin">
-              12176.56 $TWINS
+            <div class="logo_coin">
+              <img src="img/sell.svg" alt="">
+            </div>
+            <div class="price_btc">
+              ---
+            </div>
+            <div class="price_usd">
+              ---
             </div>
           </div>
+          <div class="empty_box"></div>
         </div>
-
-        <div class="outer_box bottom_block">
-          <div class="box">
-            <div class="description_coin">
-              STAKING REWARD (10%)
-            </div>
-            <div class="data_coin">
-              1522.07 $TWINS
-            </div>
+        <div class="graphic_tab">
+          <canvas id="winChart" height="100px;"></canvas>
+        </div>
+      </div>
+      <div class="bottom_container">
+        <div class="block_box block_box_bottom">
+          <div class="description_coin">
+            MAX SUPPLY
+          </div>
+          <div class="data_coin">
+            100B $TWINS
           </div>
         </div>
-
-        <div class="outer_box bottom_block">
-          <div class="box">
-            <div class="description_coin">
-              DEV FUND (10%)
-            </div>
-            <div class="data_coin">
-              1522.07 $TWINS
-            </div>
+        <div class="block_box block_box_bottom">
+          <div class="description_coin">
+            MASTERNODE REWARD (80%)
+          </div>
+          <div class="data_coin">
+            12176.56 $TWINS
           </div>
         </div>
-
-        <div class="outer_box bottom_block">
-          <div class="box">
-            <div class="description_coin">
-              MASTERNODE COLLATERAL
-            </div>
-            <div class="data_coin">
-              1M $TWINS
-            </div>
+        <div class="block_box block_box_bottom">
+          <div class="description_coin">
+            STAKING REWARD (10%)
+          </div>
+          <div class="data_coin">
+            1522.07 $TWINS
           </div>
         </div>
-
-        <div class="outer_box bottom_block">
-          <div class="box">
-            <div class="description_coin">
-              MATURITY
-            </div>
-            <div class="data_coin">
-              60 Blocks
-            </div>
+        <div class="block_box block_box_bottom">
+          <div class="description_coin">
+            DEV FUND (10%)
+          </div>
+          <div class="data_coin">
+            1522.07 $TWINS
           </div>
         </div>
-
-        <div class="outer_box bottom_block">
-          <div id="block_time" class="box">
-            <div class="description_coin">
-              BLOCK TIME
-            </div>
-            <div class="data_coin">
-              120 Sec
-            </div>
+        <div class="block_box block_box_bottom">
+          <div class="description_coin">
+            MASTERNODE COLLATERAL
+          </div>
+          <div class="data_coin">
+            1M $TWINS
           </div>
         </div>
-
-        <div class="outer_box bottom_block">
-          <div class="box">
-            <div class="description_coin">
-              STAKING AGE (10%)
-            </div>
-            <div class="data_coin">
-              3 hours
-            </div>
+        <div class="block_box block_box_bottom">
+          <div class="description_coin">
+            MATURITY
+          </div>
+          <div class="data_coin">
+            60 Blocks
           </div>
         </div>
-
+        <div id="block_time" class="block_box block_box_bottom">
+          <div class="description_coin">
+            BLOCK TIME
+          </div>
+          <div class="data_coin">
+            ---
+          </div>
+        </div>
+        <div class="block_box block_box_bottom">
+          <div class="description_coin">
+            STAKING AGE (10%)
+          </div>
+          <div class="data_coin">
+            3 hours
+          </div>
+        </div>
       </div>
     </div>
-    <!-- END DASHBOARD -->
 
-
-
-
-    <!-- js -->
-    <!-- INCLUDE JS -->
+    <!-- - -------------------------------------------------------------------->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <script src="js/jquery-3.3.1.min.js" charset="utf-8"></script>
     <script src="js/script.js" charset="utf-8"></script>
   </body>

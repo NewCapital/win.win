@@ -424,3 +424,73 @@ $(document).ready(function() {
     }
   });
 });
+
+
+// chart
+$(document).ready(function() {
+  var target = $('#winChart');
+
+  if (!target) { return false; }
+
+  var viewPort = $(window);
+
+  function percentage(num, per)
+  {
+    return Math.round((num/100)*per);
+  }
+
+  var ctx = document.getElementById('winChart').getContext('2d');
+  var canvasHeidth = ctx.canvas.height;
+  var chart;
+  // console.log(canvasHeidth);
+
+  if (viewPort.width() < 540 && viewPort.width() > 380) {
+    var gradientStroke = ctx.createLinearGradient(0, 0, 0, 220);
+  } else if (viewPort.width() <= 380) {
+    var gradientStroke = ctx.createLinearGradient(0, 0, 0, 135);
+  } else {
+    var gradientStroke = ctx.createLinearGradient(0, 0, 0, 700);
+  }
+
+  gradientStroke.addColorStop(0, "#80b6f4");
+  gradientStroke.addColorStop(1, "transparent");
+
+  $.ajax({
+    url: 'https://api.wallet.app/api/get-market-chart/btc/3',
+    success: function(data) {
+      var prices = data.prices.reverse();
+      var btc = prices.map(function(data) {
+        return (data.btc * 100000000).toFixed(2);
+      });
+      var timeDate = prices.map(function(data) {
+        return data.date;
+      });
+
+      chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+
+        // The data for our dataset
+        data: {
+            labels: timeDate,
+            datasets: [{
+              radius: 5,
+              hoverRadius: 7,
+              backgroundColor: gradientStroke,
+              borderColor: '#80b6f4',
+              data: btc,
+            }]
+        },
+
+        // Configuration options go here
+        options: {
+          legend: {
+            display: false,
+            responsive: true,
+            responsiveAnimationDuration: 100,
+          }
+        }
+    });
+    }
+  });
+});
