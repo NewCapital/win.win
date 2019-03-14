@@ -45,6 +45,7 @@ h2 {
   background-size: cover;
   z-index: 1;
   text-align: center;
+  -webkit-transform: translate3d(0px, 0px, 0px);
 }
 
 .logo_section {
@@ -748,16 +749,128 @@ h4 {
 }
 
 .numbers {
-  list-style-type: decimal;
+  list-style-type: disc;
   margin-left: 24px;
   margin-top: 8px;
 }
 
 .dotted {
-  list-style-type: disc;
+  list-style-type: circle;
   margin-left: 24px;
   margin-top: 8px;
 }
+
+/* table */
+.table {
+  border-bottom: 1px solid #ddd;
+}
+
+  .table > div {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    border-top: 1px solid #ddd;
+  }
+
+    .table > div > div {
+      border-left: 1px solid #ddd;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+    }
+    .table > div > div:last-child {
+      border-right: 1px solid #ddd;
+    }
+
+    .table > div > div:nth-child(1) {
+      width: 20%;
+    }
+    .table > div > div:nth-child(2) {
+      width: 30%;
+    }
+    .table > div > div:nth-child(3) {
+      width: 30%;
+    }
+    .table > div > div:nth-child(4) {
+      width: 20%;
+    }
+
+    .table > div > div.half {
+      width: 50%;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .table .no_padding {
+      padding: 0;
+    }
+
+    .table > div > div > div.inner {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      flex: 1 1 100%;
+      border-top: 1px solid #ddd;
+    }
+
+    .table > div > div > div.inner.vertical {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .table > div > div > div.inner.vertical > div {
+      flex: 1 1 100%;
+      padding: 15px;
+      box-sizing: border-box;
+      width: 100% !important;
+      border-left: none;
+      border-top: 1px solid #ddd;
+    }
+    .table > div > div > div.inner.vertical > div:first-child {
+      border-top: none;
+    }
+
+    .table > div > div > div.inner:first-of-type {
+      border-top: none;
+    }
+
+    .table > div > div > div.inner > div {
+      padding: 15px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+    }
+
+    .table > div > div > div.inner > div {
+      border-left: 1px solid #ddd;
+    }
+    .table > div > div > div.inner > div:nth-child(1) {
+      width: calc(60% + 1px);
+      border-left: none;
+    }
+    .table > div > div > div.inner > div:nth-child(2) {
+      width: 40%;
+    }
+
+    .table > div > div.third {
+      width: 80%;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .table > div > div.third > div.inner > div:nth-child(1) {
+      width: 37.5%;
+    }
+
+    .table > div > div.third > div.inner > div:nth-child(2) {
+      width: 37.5%;
+    }
+
+    .table > div > div.third > div.inner > div:nth-child(3) {
+      width: 25%;
+    }
 
 table, td, th {
   border: 1px solid #ddd;
