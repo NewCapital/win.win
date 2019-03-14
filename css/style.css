@@ -45,6 +45,7 @@ h2 {
   background-size: cover;
   z-index: 1;
   text-align: center;
+  -webkit-transform: translate3d(0px, 0px, 0px);
 }
 
 .logo_section {

@@ -283,6 +283,12 @@ $(document).ready(function() {
     $('.mobile_menu_items').slideDown();
   });
 
+  $('.mobile_menu_items li a').on('click', function() {
+    if ($(this).closest('.menu-dropdown').length === 0) {
+      $('.mobile_menu_items').slideUp();
+    }
+  });
+
   // get periodic statistics
   (function worker() {
     $.ajax({
