@@ -295,6 +295,7 @@ a {
   justify-content: center;
   align-items: center;
   margin-right: 32px;
+  border: 2px solid #101112;
 }
 .second_price {
   flex: 1 0 0;
@@ -302,6 +303,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 2px solid #101112;
 }
 .btc_price {
   font-size: 44px;
