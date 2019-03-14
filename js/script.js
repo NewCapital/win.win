@@ -65,13 +65,13 @@ $(document).ready(function() {
             $('#market_cap').addClass('block_plus');
             setTimeout(function() {
               $('#market_cap').removeClass('block_plus');
-            }, 1000);
+            }, 2000);
           } else if (market_cap < old_market_cap) {
             old_market_cap = market_cap;
             $('#market_cap').addClass('block_minus');
             setTimeout(function() {
               $('#market_cap').removeClass('block_minus');
-            }, 1000);
+            }, 2000);
           }
         }
 
@@ -84,13 +84,13 @@ $(document).ready(function() {
             $('#node_worth').addClass('block_plus');
             setTimeout(function() {
               $('#node_worth').removeClass('block_plus');
-            }, 1000);
+            }, 2000);
           } else if (node_worth < old_node_worth) {
             old_node_worth = node_worth;
             $('#node_worth').addClass('block_minus');
             setTimeout(function() {
               $('#node_worth').removeClass('block_minus');
-            }, 1000);
+            }, 2000);
           }
         }
 
@@ -103,13 +103,13 @@ $(document).ready(function() {
             $('#coin_locked').addClass('block_plus');
             setTimeout(function() {
               $('#coin_locked').removeClass('block_plus');
-            }, 1000);
+            }, 2000);
           } else if (twins_locked < old_twins_locked) {
             old_twins_locked = twins_locked;
             $('#coin_locked').addClass('block_minus');
             setTimeout(function() {
               $('#coin_locked').removeClass('block_minus');
-            }, 1000);
+            }, 2000);
           }
         }
 
@@ -122,13 +122,13 @@ $(document).ready(function() {
             $('#dev_fund').addClass('block_plus');
             setTimeout(function() {
               $('#dev_fund').removeClass('block_plus');
-            }, 1000);
+            }, 2000);
           } else if (dev_wallet_balance < old_dev_wallet_balance) {
             old_dev_wallet_balance = dev_wallet_balance;
             $('#dev_fund').addClass('block_minus');
             setTimeout(function() {
               $('#dev_fund').removeClass('block_minus');
-            }, 1000);
+            }, 2000);
           }
         }
 
@@ -141,13 +141,13 @@ $(document).ready(function() {
             $('#active_wallets').addClass('block_plus');
             setTimeout(function() {
               $('#active_wallets').removeClass('block_plus');
-            }, 1000);
+            }, 2000);
           } else if (active_wallets_count < old_active_wallets_count) {
             old_active_wallets_count = active_wallets_count;
             $('#active_wallets').addClass('block_minus');
             setTimeout(function() {
               $('#active_wallets').removeClass('block_minus');
-            }, 1000);
+            }, 2000);
           }
         }
 
@@ -160,13 +160,13 @@ $(document).ready(function() {
             $('#coin_supply').addClass('block_plus');
             setTimeout(function() {
               $('#coin_supply').removeClass('block_plus');
-            }, 1000);
+            }, 2000);
           } else if (money_supply < old_money_supply) {
             old_money_supply = money_supply;
             $('#coin_supply').addClass('block_minus');
             setTimeout(function() {
               $('#coin_supply').removeClass('block_minus');
-            }, 1000);
+            }, 2000);
           }
         }
 
@@ -202,13 +202,13 @@ $(document).ready(function() {
             $('#twins_bid').addClass('block_plus');
             setTimeout(function() {
               $('#twins_bid').removeClass('block_plus');
-            }, 1000);
+            }, 2000);
           } else if (twins_price_ask < old_twins_price_ask) {
             old_twins_price_ask = twins_price_ask;
             $('#twins_bid').addClass('block_minus');
             setTimeout(function() {
               $('#twins_bid').removeClass('block_minus');
-            }, 1000);
+            }, 2000);
           }
         }
 
@@ -222,13 +222,13 @@ $(document).ready(function() {
             $('#twins_ask').addClass('block_plus');
             setTimeout(function() {
               $('#twins_ask').removeClass('block_plus');
-            }, 1000);
+            }, 2000);
           } else if (twins_price_bid < old_twins_price_bid) {
             old_twins_price_bid = twins_price_bid;
             $('#twins_ask').addClass('block_minus');
             setTimeout(function() {
               $('#twins_ask').removeClass('block_minus');
-            }, 1000);
+            }, 2000);
           }
         }
 

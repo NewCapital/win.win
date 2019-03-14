@@ -333,13 +333,13 @@ a {
   flex: 1 0 0;
   flex-direction: column;
   display: flex;
-  margin-bottom: 76px;
+  margin-bottom: 56px;
 }
 .box_right {
   flex: 1 0 0;
   flex-direction: column;
   display: flex;
-  margin-bottom: 76px;
+  margin-bottom: 56px;
 }
 .box {
   background: #0D0D0E;
