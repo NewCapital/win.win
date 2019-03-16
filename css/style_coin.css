@@ -321,6 +321,31 @@ a {
   flex: 1 0 0;
   margin-bottom: 64px;
   margin-top: 32px;
+  position: relative;
+}
+.apexcharts-toolbar {
+  display: none!important;
+}
+.toggle_period {
+  position: absolute;
+  right: 0px;
+  display: flex;
+  margin-right: 24px;
+}
+.tg_btn {
+  padding: 4px 12px;
+  font-size: 12px;
+  background-color: red;
+  margin-left: 8px;
+  cursor: pointer;
+  z-index: 100500;
+  background: #0D0D0E;
+  border: 2px solid #1A1C1E;
+  border-radius: 4px;
+}
+.tg_btn_active {
+  background: rgba(75,171,62,0.20);
+  border: 2px solid #4BAB3E;
 }
 /* rigth side */
 .right_side {
@@ -452,6 +477,12 @@ a {
   }
   .box {
     margin-left: 8px;
+  }
+  .toggle_period {
+    position: inherit;
+    justify-content: center;
+    margin-bottom: 24px;
+    margin-top: 40px;
   }
 }
 @media (max-width: 600px) {

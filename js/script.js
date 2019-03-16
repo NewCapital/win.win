@@ -472,9 +472,9 @@ $(document).ready(function() {
         curve: 'straight'
     },
     series: [{
-        name: "Desktops",
-        // data: [10, 41, 35, 51, 49, 62, 69, 91, 148, 10, 41, 35, 51, 49, 62, 69, 91, 148]
-        data: [0]
+        name: "---",
+        data: [10, 41, 35, 51, 49, 62, 69, 91, 148, 10, 41, 35, 51, 49, 62, 69, 91, 148]
+        // data: [0]
     }],
     title: {
         text: 'Average TWINS Price (baced on Bitsane.com)',
@@ -488,8 +488,8 @@ $(document).ready(function() {
         }
     },
     xaxis: {
-        // categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-        categories: ['---', '---'],
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+        // categories: ['---', '---'],
     }
   }
   // chart initilization
@@ -522,52 +522,4 @@ $(document).ready(function() {
     }
   });
 
-  function initialChart() {
-    $.ajax({
-      url: 'https://api.wallet.app/api/get-market-chart/btc/3',
-      success: function(data) {
-        var prices = data.prices.reverse();
-        var btc = prices.map(function(data) {
-          return (data.btc * 100000000).toFixed(2);
-        });
-        var timeDate = prices.map(function(data) {
-          return data.date;
-        });
-
-        function addData() {
-          ApexCharts.exec('chart', "updateOptions", {
-          xaxis: {
-            categories: timeDate
-          }
-        });
-
-        ApexCharts.exec('chart', "updateSeries", [
-          {
-            data: btc
-          }
-        ]);
-        }
-
-        addData();
-
-      }
-    });
-  }
-  initialChart();
-
-  //
-  // function addData() {
-  //   ApexCharts.exec('chart', "updateOptions", {
-  //   xaxis: {
-  //     categories: ["A", "B", "C"]
-  //   }
-  // });
-  //
-  // ApexCharts.exec('chart', "updateSeries", [
-  //   {
-  //     data: [32, 44, 31]
-  //   }
-  // ]);
-  // }
-  // setTimeout(addData, 3000);
 });
