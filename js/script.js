@@ -432,46 +432,90 @@ $(document).ready(function() {
 });
 
 
-// chart
-var options = {
-            colors:['#4BAB3E'],
+// chart -----------------------------------------------------------------------
+$(document).ready(function() {
 
-            chart: {
-                height: 350,
-                type: 'line',
-                zoom: {
-                    enabled: false
-                }
-            },
-            dataLabels: {
-                enabled: false,
-            },
-            stroke: {
-                curve: 'straight'
-            },
-            series: [{
-                name: "Desktops",
-                data: [10, 41, 35, 51, 49, 62, 69, 91, 148, 10, 41, 35, 51, 49, 62, 69, 91, 148]
-            }],
-            title: {
-                text: 'General TWINS Price',
-                align: 'left'
-            },
-            grid: {
-              borderColor: '#28292A',
-                row: {
-                    colors: ['transparent', 'transparent'], // takes an array which will be repeated on columns
-                    opacity: 0.5,
-                }
-            },
-            xaxis: {
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-            }
+  // variables
+  var viewPortWidthChart;
+  var chartBlockHeight;
+  var viewPortChart = $(window);
+
+  function windowChartResize() {
+    viewPortWidthChart = viewPortChart.width();
+    if (viewPortWidthChart > 1024) {
+      chartBlockHeight = $('.coin_graph_block').height();
+    } else {
+      chartBlockHeight = 320
+    }
+  }
+
+  // run runction after load page
+  windowChartResize();
+
+
+  // chart data
+  var options = {
+    colors:['#4BAB3E'],
+    chart: {
+      height: chartBlockHeight,
+      type: 'line',
+      zoom: {
+          enabled: false
+      }
+    },
+    dataLabels: {
+        enabled: false,
+    },
+    stroke: {
+        curve: 'straight'
+    },
+    series: [{
+        name: "Desktops",
+        data: [10, 41, 35, 51, 49, 62, 69, 91, 148, 10, 41, 35, 51, 49, 62, 69, 91, 148]
+    }],
+    title: {
+        text: 'Average TWINS Price (baced on Bitsane.com)',
+        align: 'left'
+    },
+    grid: {
+      borderColor: '#28292A',
+        row: {
+            colors: ['transparent', 'transparent'],
+            opacity: 0.5,
         }
+    },
+    xaxis: {
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+    }
+  }
+    // -----
+    var chart = new ApexCharts(
+        document.querySelector("#chart"),
+        options
+    );
+    // ----
+    chart.render();
 
-        var chart = new ApexCharts(
-            document.querySelector("#chart"),
-            options
-        );
+  $(window).resize(function() {
+    var vieportWidthChart = $(window).width();
+    var vieportHeightChart = $(window).height();
 
-        chart.render();
+    if (vieportWidthChart > 1024) {
+      if (vieportHeightChart < 800) {
+        chart.updateOptions({
+          chart: {
+            height: 300,
+          }
+        });
+      } else if (vieportHeightChart > 800) {
+        chart.updateOptions({
+          chart: {
+            height: 420,
+          }
+        });
+      }
+    } else {
+
+    }
+  });
+});
