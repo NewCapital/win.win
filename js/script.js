@@ -432,6 +432,21 @@ $(document).ready(function() {
 });
 
 
+$('.coin_stat').on('click', function() {
+  $('.coin_box_block').show();
+  $('.network_map_block').hide();
+  $('.coin_map').removeClass('tg_btn_active');
+  $(this).addClass('tg_btn_active');
+});
+
+$('.coin_map').on('click', function() {
+  $('.coin_box_block').hide();
+  $('.network_map_block').show();
+  $('.coin_stat').removeClass('tg_btn_active');
+  $(this).addClass('tg_btn_active');
+});
+
+
 // chart -----------------------------------------------------------------------
 $(document).ready(function() {
 
