@@ -440,6 +440,7 @@ $(document).ready(function() {
   var chartBlockHeight;
   var viewPortChart = $(window);
 
+  // resize func after start
   function windowChartResize() {
     viewPortWidthChart = viewPortChart.width();
     if (viewPortWidthChart > 1024) {
@@ -457,6 +458,7 @@ $(document).ready(function() {
   var options = {
     colors:['#4BAB3E'],
     chart: {
+      id: 'chart',
       height: chartBlockHeight,
       type: 'line',
       zoom: {
@@ -488,14 +490,15 @@ $(document).ready(function() {
         categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
     }
   }
-    // -----
-    var chart = new ApexCharts(
-        document.querySelector("#chart"),
-        options
-    );
-    // ----
-    chart.render();
+  // chart initilization
+  var chart = new ApexCharts(
+    document.querySelector("#chart"),
+    options
+  );
+  // chart render
+  chart.render();
 
+  // adaptive resize behavior
   $(window).resize(function() {
     var vieportWidthChart = $(window).width();
     var vieportHeightChart = $(window).height();
@@ -514,8 +517,22 @@ $(document).ready(function() {
           }
         });
       }
-    } else {
-
     }
   });
+
+  //
+  // function addData() {
+  //   ApexCharts.exec('chart', "updateOptions", {
+  //   xaxis: {
+  //     categories: ["A", "B", "C"]
+  //   }
+  // });
+  //
+  // ApexCharts.exec('chart', "updateSeries", [
+  //   {
+  //     data: [32, 44, 31]
+  //   }
+  // ]);
+  // }
+  // setTimeout(addData, 3000);
 });
