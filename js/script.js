@@ -456,14 +456,26 @@ $(document).ready(function() {
 
   // chart data
   var options = {
+    tooltip: {
+      enabled: true,
+      x: {
+        show: true
+      }
+    },
     colors:['#4BAB3E'],
     chart: {
       id: 'chart',
       height: chartBlockHeight,
-      type: 'line',
+      // type: 'line',
       zoom: {
           enabled: false
-      }
+      },
+      animations: {
+        dynamicAnimation: {
+            enabled: true,
+            speed: 1000
+        }
+    }
     },
     dataLabels: {
         enabled: false,
@@ -472,8 +484,8 @@ $(document).ready(function() {
         curve: 'straight'
     },
     series: [{
-        name: "TWINS Price",
-        data: [10, 41, 35, 51, 49, 62, 69, 91, 148, 10, 41, 35, 51, 49, 62, 69, 91, 148]
+        name: "Price Satoshi",
+        data: [0]
         // data: [0]
     }],
     title: {
@@ -488,8 +500,10 @@ $(document).ready(function() {
         }
     },
     xaxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-        // categories: ['---', '---'],
+        categories: ['---', '---'],
+        labels: {
+          show: false,
+        }
     }
   }
   // chart initilization
@@ -520,6 +534,162 @@ $(document).ready(function() {
         });
       }
     }
+  });
+
+  // update data within graph
+  function pushDataChart(price, time) {
+    ApexCharts.exec('chart', "updateOptions", {
+      xaxis: {
+        categories: time
+      }
+    });
+    ApexCharts.exec('chart', "updateSeries", [
+      {
+        data: price
+      }
+    ]);
+  }
+
+  var reUpdateMonth;
+  var reUpdateDay;
+  var updateWeek;
+  var reUpdateAll;
+
+  // update graph day
+  var updateDay = function() {
+    $.ajax({
+      url: 'https://api.wallet.app/api/get-market-chart/btc/1',
+      success: function(data) {
+
+        var prices = data.prices.reverse();
+
+        var btc = prices.map(function(data) {
+          return (data.btc * 100000000).toFixed(2);
+        });
+
+        var timeDate = prices.map(function(data) {
+          var compile = new Date(data.timestamp)
+          return compile;
+        });
+
+        pushDataChart(btc, timeDate);
+      }
+    });
+    console.log('done1');
+    reUpdateDay = setTimeout(updateDay, 600000);
+  }
+
+  // update graph 7 days
+  var updateWeek = function() {
+    $.ajax({
+      url: 'https://api.wallet.app/api/get-market-chart/btc/7',
+      success: function(data) {
+
+        var prices = data.prices.reverse();
+
+        var btc = prices.map(function(data) {
+          return (data.btc * 100000000).toFixed(2);
+        });
+
+        var timeDate = prices.map(function(data) {
+          var compile = new Date(data.timestamp)
+          return compile;
+        });
+
+        pushDataChart(btc, timeDate);
+      }
+    });
+    console.log('done2');
+    reUpdateWeek = setTimeout(updateWeek, 600000);
+  }
+
+  // update graph 30 days
+  var updateMonth = function() {
+    $.ajax({
+      url: 'https://api.wallet.app/api/get-market-chart/btc/30',
+      success: function(data) {
+
+        var prices = data.prices.reverse();
+
+        var btc = prices.map(function(data) {
+          return (data.btc * 100000000).toFixed(2);
+        });
+
+        var timeDate = prices.map(function(data) {
+          var compile = new Date(data.timestamp)
+          return compile;
+        });
+
+        pushDataChart(btc, timeDate);
+      }
+    });
+    console.log('done3');
+    reUpdateMonth = setTimeout(updateMonth, 600000);
+  }
+
+  // update graph All days
+  var updateAll = function() {
+    $.ajax({
+      url: 'https://api.wallet.app/api/get-market-chart/btc/80',
+      success: function(data) {
+
+        var prices = data.prices.reverse();
+
+        var btc = prices.map(function(data) {
+          return (data.btc * 100000000).toFixed(2);
+        });
+
+        var timeDate = prices.map(function(data) {
+          var compile = new Date(data.timestamp)
+          return compile;
+        });
+
+        pushDataChart(btc, timeDate);
+      }
+    });
+    console.log('done4');
+    reUpdateAll = setTimeout(updateAll, 600000);
+  }
+
+  // updateAll();
+  // updateMonth();
+  updateWeek();
+  // updateDay();
+
+  $('.btn_24').on('click', function() {
+    updateDay();
+    clearInterval(reUpdateWeek);
+    clearInterval(reUpdateMonth);
+    clearInterval(reUpdateAll);
+    $('.tg_btn').removeClass('tg_btn_active');
+    $(this).addClass('tg_btn_active');
+  });
+
+  $('.btn_7').on('click', function() {
+    updateWeek();
+    clearInterval(reUpdateDay);
+    clearInterval(reUpdateMonth);
+    clearInterval(reUpdateAll);
+    $('.tg_btn').removeClass('tg_btn_active');
+    $(this).addClass('tg_btn_active');
+  });
+
+  $('.btn_30').on('click', function() {
+    updateMonth();
+    clearInterval(reUpdateDay);
+    clearInterval(reUpdateWeek);
+    clearInterval(reUpdateAll);
+    $('.tg_btn').removeClass('tg_btn_active');
+    $(this).addClass('tg_btn_active');
+  });
+
+  $('.btn_all').on('click', function() {
+    updateAll();
+    clearInterval(reUpdateDay);
+    clearInterval(reUpdateWeek);
+    clearInterval(reUpdateMonth);
+    $('.tg_btn').removeClass('tg_btn_active');
+    $(this).addClass('tg_btn_active');
   });
 
 });

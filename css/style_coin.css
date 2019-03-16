@@ -354,6 +354,9 @@ a {
   background-color: #000000!important;
   border: none!important;
 }
+.apexcharts-xaxistooltip {
+  display: none!important;
+}
 /* rigth side */
 .right_side {
   flex: 0 0 0;
