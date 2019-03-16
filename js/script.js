@@ -472,7 +472,7 @@ $(document).ready(function() {
         curve: 'straight'
     },
     series: [{
-        name: "---",
+        name: "TWINS Price",
         data: [10, 41, 35, 51, 49, 62, 69, 91, 148, 10, 41, 35, 51, 49, 62, 69, 91, 148]
         // data: [0]
     }],
