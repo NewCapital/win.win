@@ -1,24 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <!-- js  ------------------------------------------------------------------>
     <script type="text/javascript">
-    (function() {
     window.__insp = window.__insp || [];
     __insp.push(['wid', 764477300]);
-    var ldinsp = function(){
-    if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=764477300&r=' + Math.floor(new Date().getTime()/3600000); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+    var ldinsp = function() {
+        if (typeof window.__inspld != "undefined") return;
+        window.__inspld = 1;
+        var insp = document.createElement('script');
+        insp.type = 'text/javascript';
+        insp.async = true;
+        insp.id = "inspsync";
+        insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=764477300&r=' + Math.floor(new Date().getTime() / 3600000);
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(insp, x);
+    };
     setTimeout(ldinsp, 0);
     })();
     </script>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73370264-1"></script>
-  <script>
-   window.dataLayer = window.dataLayer || [];
-   function gtag(){dataLayer.push(arguments);}
-   gtag('js', new Date());
-
-    gtag('config', 'UA-73370264-1');
-  </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73370264-1"></script>
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+      gtag('config', 'UA-73370264-1');
+    </script>
+    <!-- js  ------------------------------------------------------------------>
     <meta charset="utf-8">
     <title>Statistics Dashboard | TWINS Coin</title>
     <meta name="description" content="TWINS Coin statistics dashboard" />
@@ -31,7 +39,7 @@
   </head>
   <body class="dashboard">
 
-    <!-- menu -->
+    <!-- menu ----------------------------------------------------------------->
 
     <div class="mobile_menu_items">
       <div class="close_buttom">
@@ -39,7 +47,6 @@
       </div>
       <ul>
         <li><a href="https://explorer.win.win" target="_blank">Blockchain Explorer</a></li>
-        <li><a href="https://map.win.win" target="_blank">Network Map</a></li>
         <li><a href="https://docs.win.win" target="_blank">User Guides</a></li>
         <li><a href="/#download">Wallets</a></li>
         <li><a target="_blank" href="https://bitsane.com/exchange/twins-btc?ref=new_capital" target="_blank">Get $TWINS</a></li>
@@ -48,7 +55,7 @@
     </div>
 
     <section class="main_menu main_menu_coin_info">
-      <div class="left_side">
+      <div class="left_side_menu">
 
         <div class="small_logo">
           <a href="index.html"><img src="img/small_logo.svg" alt=""></a>
@@ -61,7 +68,6 @@
           </div>
           <ul>
             <li><a href="https://explorer.win.win" target="_blank">Blockchain Explorer</a></li>
-            <li><a href="https://map.win.win" target="_blank">Network Map</a></li>
             <li><a href="https://docs.win.win" target="_blank">User Guides</a></li>
             <li><a href="/#download">Wallets</a></li>
             <li><a target="_blank" href="https://bitsane.com/exchange/twins-btc?ref=new_capital" target="_blank">Get $TWINS</a></li>
@@ -82,167 +88,197 @@
       </div>
     </section>
 
-    <!-- - -------------------------------------------------------------------->
+    <!-- menu end ----------------------------------------------------------------->
+    <div class="grid_container">
+      <div class="left_side">
+        <div class="swither">
+          <div class="coin_stat tg_btn_2 tg_btn_active">
+            Coin Stats
+          </div>
+          <div class="coin_map tg_btn_2">
+            Network Map
+          </div>
+        </div>
+        <div class="coin_box_block">
+          <div class="coin_price_block">
+            <div id="twins_bid" class="first_price">
+              <div class="description_coin">
+                BUY PRICE
+              </div>
+              <div class="logo_coin">
+                <img src="/img/buy.svg" alt="">
+              </div>
+              <div class="btc_price">
+                ---
+              </div>
+              <div class="usd_price">
+                ---
+              </div>
+            </div>
+            <div id="twins_ask" class="second_price">
+              <div class="description_coin">
+                SELL PRICE
+              </div>
+              <div class="logo_coin">
+                <img src="/img/sell.svg" alt="">
+              </div>
+              <div class="btc_price">
+                ---
+              </div>
+              <div class="usd_price">
+                ---
+              </div>
+            </div>
+          </div>
+          <div class="coin_graph_block">
+            <div class="toggle_period">
+              <div class="btn_24 tg_btn">
+                Last 24 Hours
+              </div>
+              <div class="btn_7 tg_btn tg_btn_active">
+                Last 7 Days
+              </div>
+              <div class="btn_30 tg_btn">
+                Last 1 Month
+              </div>
+              <div class="btn_all tg_btn">
+                All period
+              </div>
+            </div>
+            <div id="chart">
 
-    <div class="app">
-      <div class="top_container">
-        <div id="market_cap" class="block_box">
-          <div class="description_coin">
-            MARKET CAP (USD)
-          </div>
-          <div class="data_coin">
-            ---
+            </div>
           </div>
         </div>
-        <div id="coin_supply" class="block_box">
-          <div class="description_coin">
-            CURRENT COIN SUPPLY
-          </div>
-          <div class="data_coin">
-            ---
-          </div>
-        </div>
-        <div id="coin_locked" class="block_box">
-          <div class="description_coin">
-            COINS LOCKED
-          </div>
-          <div class="data_coin">
-            ---
-          </div>
-        </div>
-        <div id="node_worth" class="block_box">
-          <div class="description_coin">
-            NODE WORTH
-          </div>
-          <div class="data_coin">
-            ---
-          </div>
-        </div>
-        <div id="active_wallets" class="block_box">
-          <div class="description_coin">
-            ACTIVE / TOTAL WALLETS
-          </div>
-          <div class="data_coin">
-            ---
-          </div>
-        </div>
-        <div id="dev_fund" class="block_box">
-          <div class="description_coin">
-            DEV FUND ($TWINS)
-          </div>
-          <div class="data_coin">
-            ---
-          </div>
+        <div class="network_map_block">
+          <iframe src="https://map.win.win/" width="" height=""></iframe>
         </div>
       </div>
-      <div class="main_tab_content">
-        <div class="coin_info_tab">
-          <div class="empty_box"></div>
-          <div id="twins_bid" class="box_coin">
+      <div class="right_side">
+        <div class="box_left">
+          <div id="market_cap" class="box">
             <div class="description_coin">
-
-              BUY PRICE
+              MARKET CAP (USD)
             </div>
-            <div class="logo_coin">
-              <img src="img/buy.svg" alt="">
-            </div>
-            <div class="price_btc">
-              ---
-            </div>
-            <div class="price_usd">
+            <div class="data_coin">
               ---
             </div>
           </div>
-          <div id="twins_ask" class="box_coin">
+          <div id="coin_locked" class="box">
             <div class="description_coin">
-              SELL PRICE
+              COINS LOCKED
             </div>
-            <div class="logo_coin">
-              <img src="img/sell.svg" alt="">
-            </div>
-            <div class="price_btc">
-              ---
-            </div>
-            <div class="price_usd">
+            <div class="data_coin">
               ---
             </div>
           </div>
-          <div class="empty_box"></div>
-        </div>
-        <div class="graphic_tab">
-          <canvas id="winChart" height="100px;"></canvas>
-        </div>
-      </div>
-      <div class="bottom_container">
-        <div class="block_box block_box_bottom">
-          <div class="description_coin">
-            MAX SUPPLY
+          <div id="node_worth" class="box">
+            <div class="description_coin">
+              NODE WORTH
+            </div>
+            <div class="data_coin">
+              ---
+            </div>
           </div>
-          <div class="data_coin">
-            100B $TWINS
+          <div class="box">
+            <div class="description_coin">
+              MAX SUPPLY
+            </div>
+            <div class="data_coin">
+              100B $TWINS
+            </div>
           </div>
-        </div>
-        <div class="block_box block_box_bottom">
-          <div class="description_coin">
-            MASTERNODE REWARD (80%)
+          <div class="box">
+            <div class="description_coin">
+              STAKING REWARD (10%)
+            </div>
+            <div class="data_coin">
+              1522.07 $TWINS
+            </div>
           </div>
-          <div class="data_coin">
-            12176.56 $TWINS
+          <div class="box">
+            <div class="description_coin">
+              MASTERNODE COLLATERAL
+            </div>
+            <div class="data_coin">
+              1M $TWINS
+            </div>
           </div>
-        </div>
-        <div class="block_box block_box_bottom">
-          <div class="description_coin">
-            STAKING REWARD (10%)
-          </div>
-          <div class="data_coin">
-            1522.07 $TWINS
-          </div>
-        </div>
-        <div class="block_box block_box_bottom">
-          <div class="description_coin">
-            DEV FUND (10%)
-          </div>
-          <div class="data_coin">
-            1522.07 $TWINS
-          </div>
-        </div>
-        <div class="block_box block_box_bottom">
-          <div class="description_coin">
-            MASTERNODE COLLATERAL
-          </div>
-          <div class="data_coin">
-            1M $TWINS
+          <div id="block_time" class="box">
+            <div class="description_coin">
+              BLOCK TIME
+            </div>
+            <div class="data_coin">
+              ---
+            </div>
           </div>
         </div>
-        <div class="block_box block_box_bottom">
-          <div class="description_coin">
-            MATURITY
+        <div class="box_right">
+          <div id="coin_supply" class="box">
+            <div class="description_coin">
+              CURRENT COIN SUPPLY
+            </div>
+            <div class="data_coin">
+              ---
+            </div>
           </div>
-          <div class="data_coin">
-            60 Blocks
+          <div id="active_wallets" class="box">
+            <div class="description_coin">
+              ACTIVE / TOTAL WALLETS
+            </div>
+            <div class="data_coin">
+              ---
+            </div>
           </div>
-        </div>
-        <div id="block_time" class="block_box block_box_bottom">
-          <div class="description_coin">
-            BLOCK TIME
+          <div id="dev_fund" class="box">
+            <div class="description_coin">
+              DEV FUND ($TWINS)
+            </div>
+            <div class="data_coin">
+              ---
+            </div>
           </div>
-          <div class="data_coin">
-            ---
+          <div class="box">
+            <div class="description_coin">
+              MASTERNODE REWARD (80%)
+            </div>
+            <div class="data_coin">
+              12176.56 $TWINS
+            </div>
           </div>
-        </div>
-        <div class="block_box block_box_bottom">
-          <div class="description_coin">
-            STAKING AGE
+          <div class="box">
+            <div class="description_coin">
+              DEV FUND (10%)
+            </div>
+            <div class="data_coin">
+              1522.07 $TWINS
+            </div>
           </div>
-          <div class="data_coin">
-            3 hours
+          <div class="box">
+            <div class="description_coin">
+              MATURITY
+            </div>
+            <div class="data_coin">
+              60 Blocks
+            </div>
+          </div>
+          <div class="box">
+            <div class="description_coin">
+              STAKING AGE
+            </div>
+            <div class="data_coin">
+              3 Hours
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <!-- app -------------------------------------------------------------------->
 
-    <!-- - -------------------------------------------------------------------->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+
+    <!-- app end -------------------------------------------------------------------->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts" charset="utf-8"></script>
     <script src="js/jquery-3.3.1.min.js" charset="utf-8"></script>
     <script src="js/script.js" charset="utf-8"></script>
   </body>

@@ -65,13 +65,13 @@ $(document).ready(function() {
             $('#market_cap').addClass('block_plus');
             setTimeout(function() {
               $('#market_cap').removeClass('block_plus');
-            }, 1000);
+            }, 2000);
           } else if (market_cap < old_market_cap) {
             old_market_cap = market_cap;
             $('#market_cap').addClass('block_minus');
             setTimeout(function() {
               $('#market_cap').removeClass('block_minus');
-            }, 1000);
+            }, 2000);
           }
         }
 
@@ -84,13 +84,13 @@ $(document).ready(function() {
             $('#node_worth').addClass('block_plus');
             setTimeout(function() {
               $('#node_worth').removeClass('block_plus');
-            }, 1000);
+            }, 2000);
           } else if (node_worth < old_node_worth) {
             old_node_worth = node_worth;
             $('#node_worth').addClass('block_minus');
             setTimeout(function() {
               $('#node_worth').removeClass('block_minus');
-            }, 1000);
+            }, 2000);
           }
         }
 
@@ -103,13 +103,13 @@ $(document).ready(function() {
             $('#coin_locked').addClass('block_plus');
             setTimeout(function() {
               $('#coin_locked').removeClass('block_plus');
-            }, 1000);
+            }, 2000);
           } else if (twins_locked < old_twins_locked) {
             old_twins_locked = twins_locked;
             $('#coin_locked').addClass('block_minus');
             setTimeout(function() {
               $('#coin_locked').removeClass('block_minus');
-            }, 1000);
+            }, 2000);
           }
         }
 
@@ -122,13 +122,13 @@ $(document).ready(function() {
             $('#dev_fund').addClass('block_plus');
             setTimeout(function() {
               $('#dev_fund').removeClass('block_plus');
-            }, 1000);
+            }, 2000);
           } else if (dev_wallet_balance < old_dev_wallet_balance) {
             old_dev_wallet_balance = dev_wallet_balance;
             $('#dev_fund').addClass('block_minus');
             setTimeout(function() {
               $('#dev_fund').removeClass('block_minus');
-            }, 1000);
+            }, 2000);
           }
         }
 
@@ -141,13 +141,13 @@ $(document).ready(function() {
             $('#active_wallets').addClass('block_plus');
             setTimeout(function() {
               $('#active_wallets').removeClass('block_plus');
-            }, 1000);
+            }, 2000);
           } else if (active_wallets_count < old_active_wallets_count) {
             old_active_wallets_count = active_wallets_count;
             $('#active_wallets').addClass('block_minus');
             setTimeout(function() {
               $('#active_wallets').removeClass('block_minus');
-            }, 1000);
+            }, 2000);
           }
         }
 
@@ -160,13 +160,13 @@ $(document).ready(function() {
             $('#coin_supply').addClass('block_plus');
             setTimeout(function() {
               $('#coin_supply').removeClass('block_plus');
-            }, 1000);
+            }, 2000);
           } else if (money_supply < old_money_supply) {
             old_money_supply = money_supply;
             $('#coin_supply').addClass('block_minus');
             setTimeout(function() {
               $('#coin_supply').removeClass('block_minus');
-            }, 1000);
+            }, 2000);
           }
         }
 
@@ -185,12 +185,12 @@ $(document).ready(function() {
 
         twins_price_bid = Number(data.lowestAsk);
 
-        $('#twins_ask .price_btc').html(twins_price_bid.toFixed(8) + " BTC");
-        $('#twins_bid .price_usd').html("$" + btc_price.toFixed(6));
+        $('#twins_ask .btc_price').html(twins_price_bid.toFixed(8) + " BTC");
+        $('#twins_bid .usd_price').html("$" + btc_price.toFixed(6));
 
         twins_price_ask = Number(data.highestBid);
-        $('#twins_bid .price_btc').html(twins_price_ask.toFixed(8) + " BTC");
-        $('#twins_ask .price_usd').html("$" + (btc_price * twins_price_bid / twins_price_ask).toFixed(6));
+        $('#twins_bid .btc_price').html(twins_price_ask.toFixed(8) + " BTC");
+        $('#twins_ask .usd_price').html("$" + (btc_price * twins_price_bid / twins_price_ask).toFixed(6));
 
 
         // twins_price_ask indication
@@ -202,13 +202,13 @@ $(document).ready(function() {
             $('#twins_bid').addClass('block_plus');
             setTimeout(function() {
               $('#twins_bid').removeClass('block_plus');
-            }, 1000);
+            }, 2000);
           } else if (twins_price_ask < old_twins_price_ask) {
             old_twins_price_ask = twins_price_ask;
             $('#twins_bid').addClass('block_minus');
             setTimeout(function() {
               $('#twins_bid').removeClass('block_minus');
-            }, 1000);
+            }, 2000);
           }
         }
 
@@ -222,13 +222,13 @@ $(document).ready(function() {
             $('#twins_ask').addClass('block_plus');
             setTimeout(function() {
               $('#twins_ask').removeClass('block_plus');
-            }, 1000);
+            }, 2000);
           } else if (twins_price_bid < old_twins_price_bid) {
             old_twins_price_bid = twins_price_bid;
             $('#twins_ask').addClass('block_minus');
             setTimeout(function() {
               $('#twins_ask').removeClass('block_minus');
-            }, 1000);
+            }, 2000);
           }
         }
 
@@ -432,71 +432,279 @@ $(document).ready(function() {
 });
 
 
-// chart
+$('.coin_stat').on('click', function() {
+  $('.coin_box_block').show();
+  $('.network_map_block').hide();
+  $('.coin_map').removeClass('tg_btn_active');
+  $(this).addClass('tg_btn_active');
+});
+
+$('.coin_map').on('click', function() {
+  $('.coin_box_block').hide();
+  $('.network_map_block').show();
+  $('.coin_stat').removeClass('tg_btn_active');
+  $(this).addClass('tg_btn_active');
+});
+
+
+// chart -----------------------------------------------------------------------
 $(document).ready(function() {
-  var target = $('#winChart');
 
-  if (!target) { return false; }
+  // variables
+  var viewPortWidthChart;
+  var chartBlockHeight;
+  var viewPortChart = $(window);
 
-  var viewPort = $(window);
-
-  function percentage(num, per)
-  {
-    return Math.round((num/100)*per);
+  // resize func after start
+  function windowChartResize() {
+    viewPortWidthChart = viewPortChart.width();
+    if (viewPortWidthChart > 1024) {
+      chartBlockHeight = $('.coin_graph_block').height();
+    } else {
+      chartBlockHeight = 320
+    }
   }
 
-  var ctx = document.getElementById('winChart').getContext('2d');
-  var canvasHeidth = ctx.canvas.height;
-  var chart;
-  // console.log(canvasHeidth);
+  // run runction after load page
+  windowChartResize();
 
-  if (viewPort.width() < 540 && viewPort.width() > 380) {
-    var gradientStroke = ctx.createLinearGradient(0, 0, 0, 220);
-  } else if (viewPort.width() <= 380) {
-    var gradientStroke = ctx.createLinearGradient(0, 0, 0, 135);
-  } else {
-    var gradientStroke = ctx.createLinearGradient(0, 0, 0, 700);
-  }
 
-  gradientStroke.addColorStop(0, "#80b6f4");
-  gradientStroke.addColorStop(1, "transparent");
-
-  $.ajax({
-    url: 'https://api.wallet.app/api/get-market-chart/btc/3',
-    success: function(data) {
-      var prices = data.prices.reverse();
-      var btc = prices.map(function(data) {
-        return (data.btc * 100000000).toFixed(2);
-      });
-      var timeDate = prices.map(function(data) {
-        return data.date;
-      });
-
-      chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
-
-        // The data for our dataset
-        data: {
-            labels: timeDate,
-            datasets: [{
-              radius: 5,
-              hoverRadius: 7,
-              backgroundColor: gradientStroke,
-              borderColor: '#80b6f4',
-              data: btc,
-            }]
-        },
-
-        // Configuration options go here
-        options: {
-          legend: {
-            display: false,
-            responsive: true,
-            responsiveAnimationDuration: 100,
-          }
+  // chart data
+  var options = {
+    tooltip: {
+      enabled: true,
+      x: {
+        show: true
+      }
+    },
+    colors:['#4BAB3E'],
+    chart: {
+      id: 'chart',
+      height: chartBlockHeight,
+      // type: 'line',
+      zoom: {
+          enabled: false
+      },
+      animations: {
+        dynamicAnimation: {
+            enabled: true,
+            speed: 1000
         }
-    });
+    }
+    },
+    dataLabels: {
+        enabled: false,
+    },
+    stroke: {
+        curve: 'straight'
+    },
+    series: [{
+        name: "Price Satoshi",
+        data: [0]
+        // data: [0]
+    }],
+    title: {
+        text: 'Average TWINS Price (baced on Bitsane.com)',
+        align: 'left'
+    },
+    grid: {
+      borderColor: '#28292A',
+        row: {
+            colors: ['transparent', 'transparent'],
+            opacity: 0.5,
+        }
+    },
+    xaxis: {
+        categories: ['---', '---'],
+        labels: {
+          show: false,
+        }
+    }
+  }
+  // chart initilization
+  var chart = new ApexCharts(
+    document.querySelector("#chart"),
+    options
+  );
+  // chart render
+  chart.render();
+
+  // adaptive resize behavior
+  $(window).resize(function() {
+    var vieportWidthChart = $(window).width();
+    var vieportHeightChart = $(window).height();
+
+    if (vieportWidthChart > 1024) {
+      if (vieportHeightChart < 800) {
+        chart.updateOptions({
+          chart: {
+            height: 300,
+          }
+        });
+      } else if (vieportHeightChart > 800) {
+        chart.updateOptions({
+          chart: {
+            height: 420,
+          }
+        });
+      }
     }
   });
+
+  // update data within graph
+  function pushDataChart(price, time) {
+    ApexCharts.exec('chart', "updateOptions", {
+      xaxis: {
+        categories: time
+      }
+    });
+    ApexCharts.exec('chart', "updateSeries", [
+      {
+        data: price
+      }
+    ]);
+  }
+
+  var reUpdateMonth;
+  var reUpdateDay;
+  var updateWeek;
+  var reUpdateAll;
+
+  // update graph day
+  var updateDay = function() {
+    $.ajax({
+      url: 'https://api.wallet.app/api/get-market-chart/btc/1',
+      success: function(data) {
+
+        var prices = data.prices.reverse();
+
+        var btc = prices.map(function(data) {
+          return (data.btc * 100000000).toFixed(2);
+        });
+
+        var timeDate = prices.map(function(data) {
+          var compile = new Date(data.timestamp)
+          return compile;
+        });
+
+        pushDataChart(btc, timeDate);
+      }
+    });
+    console.log('done1');
+    reUpdateDay = setTimeout(updateDay, 600000);
+  }
+
+  // update graph 7 days
+  var updateWeek = function() {
+    $.ajax({
+      url: 'https://api.wallet.app/api/get-market-chart/btc/7',
+      success: function(data) {
+
+        var prices = data.prices.reverse();
+
+        var btc = prices.map(function(data) {
+          return (data.btc * 100000000).toFixed(2);
+        });
+
+        var timeDate = prices.map(function(data) {
+          var compile = new Date(data.timestamp)
+          return compile;
+        });
+
+        pushDataChart(btc, timeDate);
+      }
+    });
+    console.log('done2');
+    reUpdateWeek = setTimeout(updateWeek, 600000);
+  }
+
+  // update graph 30 days
+  var updateMonth = function() {
+    $.ajax({
+      url: 'https://api.wallet.app/api/get-market-chart/btc/30',
+      success: function(data) {
+
+        var prices = data.prices.reverse();
+
+        var btc = prices.map(function(data) {
+          return (data.btc * 100000000).toFixed(2);
+        });
+
+        var timeDate = prices.map(function(data) {
+          var compile = new Date(data.timestamp)
+          return compile;
+        });
+
+        pushDataChart(btc, timeDate);
+      }
+    });
+    console.log('done3');
+    reUpdateMonth = setTimeout(updateMonth, 600000);
+  }
+
+  // update graph All days
+  var updateAll = function() {
+    $.ajax({
+      url: 'https://api.wallet.app/api/get-market-chart/btc/80',
+      success: function(data) {
+
+        var prices = data.prices.reverse();
+
+        var btc = prices.map(function(data) {
+          return (data.btc * 100000000).toFixed(2);
+        });
+
+        var timeDate = prices.map(function(data) {
+          var compile = new Date(data.timestamp)
+          return compile;
+        });
+
+        pushDataChart(btc, timeDate);
+      }
+    });
+    console.log('done4');
+    reUpdateAll = setTimeout(updateAll, 600000);
+  }
+
+  // updateAll();
+  // updateMonth();
+  updateWeek();
+  // updateDay();
+
+  $('.btn_24').on('click', function() {
+    updateDay();
+    clearInterval(reUpdateWeek);
+    clearInterval(reUpdateMonth);
+    clearInterval(reUpdateAll);
+    $('.tg_btn').removeClass('tg_btn_active');
+    $(this).addClass('tg_btn_active');
+  });
+
+  $('.btn_7').on('click', function() {
+    updateWeek();
+    clearInterval(reUpdateDay);
+    clearInterval(reUpdateMonth);
+    clearInterval(reUpdateAll);
+    $('.tg_btn').removeClass('tg_btn_active');
+    $(this).addClass('tg_btn_active');
+  });
+
+  $('.btn_30').on('click', function() {
+    updateMonth();
+    clearInterval(reUpdateDay);
+    clearInterval(reUpdateWeek);
+    clearInterval(reUpdateAll);
+    $('.tg_btn').removeClass('tg_btn_active');
+    $(this).addClass('tg_btn_active');
+  });
+
+  $('.btn_all').on('click', function() {
+    updateAll();
+    clearInterval(reUpdateDay);
+    clearInterval(reUpdateWeek);
+    clearInterval(reUpdateMonth);
+    $('.tg_btn').removeClass('tg_btn_active');
+    $(this).addClass('tg_btn_active');
+  });
+
 });
