@@ -36,6 +36,9 @@
   .team_block {
     flex-direction: column;
   }
+  .col {
+    display: block;
+  }
   .col img {
     margin-bottom: 40px;
   }
