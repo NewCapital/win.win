@@ -1,0 +1,87 @@
+@media (max-width: 720px) {
+  .divider, .left_side ul {
+    display: none;
+  }
+  .header_content, .mobile_menu_btn, .stats span {
+    display: block;
+  }
+  .coin_info_stats {
+    height: 64px;
+    width: 300px;
+  }
+  .info_icon {
+    padding: 20px;
+  }
+  .coin_stats_inner {
+    width: 2700px;
+  }
+  .stats {
+    width: 300px;
+  }
+  .coin_data {
+    width: 300px;
+  }
+  .container {
+    flex-direction: column;
+  }
+  .reverse {
+    flex-direction: column-reverse!important;
+  }
+  .left_col {
+    padding-right: 0px;
+  }
+  .right_col {
+    padding-left: 0px;
+  }
+  .team_block {
+    flex-direction: column;
+  }
+  .col img {
+    margin-bottom: 40px;
+  }
+  .highlited {
+    display: block;
+    margin-bottom: 8px;
+  }
+  .title {
+    margin-top: 64px;
+  }
+  .partners_block {
+    flex-direction: column;
+  }
+  .partners_logo a {
+    text-align: center;
+    display: block
+  }
+  .top_block_footer {
+    flex-direction: column;
+  }
+  .logo_name {
+    text-align: center;
+    margin-left: 0px;
+    margin-top: 16px;
+  }
+  .wallets {
+    text-align: center;
+    margin-left: 0px;
+    margin-top: 16px;
+  }
+  .version {
+    text-align: center;
+    margin-left: 0px;
+    margin-top: 16px;
+  }
+  .wallet_logo_block {
+    display: block;
+  }
+  .wallet_container {
+    margin-bottom: 16px;
+  }
+}
+@media (max-width: 420px) {
+  .top_header {
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+  }
+}
