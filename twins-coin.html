@@ -1,96 +1,109 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <!-- js  ------------------------------------------------------------------>
+    <!-- inspectlect ---------------------------------------------------------->
     <script type="text/javascript">
-    window.__insp = window.__insp || [];
-    __insp.push(['wid', 764477300]);
-    var ldinsp = function() {
-        if (typeof window.__inspld != "undefined") return;
-        window.__inspld = 1;
-        var insp = document.createElement('script');
-        insp.type = 'text/javascript';
-        insp.async = true;
-        insp.id = "inspsync";
-        insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=764477300&r=' + Math.floor(new Date().getTime() / 3600000);
-        var x = document.getElementsByTagName('script')[0];
-        x.parentNode.insertBefore(insp, x);
-    };
-    setTimeout(ldinsp, 0);
-    })();
+      (function() {
+        window.__insp = window.__insp || [];
+        __insp.push(['wid', 764477300]);
+        var ldinsp = function() {
+            if (typeof window.__inspld != "undefined") return;
+            window.__inspld = 1;
+            var insp = document.createElement('script');
+            insp.type = 'text/javascript';
+            insp.async = true;
+            insp.id = "inspsync";
+            insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=764477300&r=' + Math.floor(new Date().getTime() / 3600000);
+            var x = document.getElementsByTagName('script')[0];
+            x.parentNode.insertBefore(insp, x);
+        };
+        setTimeout(ldinsp, 0);
+      })();
     </script>
+
+    <!-- google analitics ----------------------------------------------------->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73370264-1"></script>
-    <script>
-     window.dataLayer = window.dataLayer || [];
-     function gtag(){dataLayer.push(arguments);}
-     gtag('js', new Date());
-      gtag('config', 'UA-73370264-1');
-    </script>
-    <!-- js  ------------------------------------------------------------------>
+  	<script type="text/javascript">
+   	 window.dataLayer = window.dataLayer || [];
+   	 function gtag(){dataLayer.push(arguments);}
+   	 gtag('js', new Date());
+     gtag('config', 'UA-73370264-1');
+  	</script>
+
+    <!-- meta & title --------------------------------------------------------->
     <meta charset="utf-8">
-    <title>Statistics Dashboard | TWINS Coin</title>
-    <meta name="description" content="TWINS Coin statistics dashboard" />
+    <title>Enabling peer-to-peer value exchanges | TWINS Coin</title>
+    <meta name="description" content="TWINS coin will power win.win, a truly decentralized, peer-to-peer exchange platform, allowing direct transactions between end-user wallets." />
     <meta name="author" content="win.win">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="google-site-verification" content="SvWQDf9XdCWUwmehzfvL2RAZi3ZCFaN2d16amNWD694" />
-    <link rel="icon" type="image/png" href="img/favicon.png" />
+
+    <!-- favicon -------------------------------------------------------------->
+    <link rel="icon" type="image/png" href="img/system/favicon.png" />
+
+    <!-- css include ---------------------------------------------------------->
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style_coin.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media.css">
+
   </head>
   <body class="dashboard">
-
-    <!-- menu ----------------------------------------------------------------->
-
-    <div class="mobile_menu_items">
-      <div class="close_buttom">
-        <img src="img/close.svg" alt="">
+    <!-- CONTENT START -------------------------------------------------------->
+    <!-- mobile menu -->
+    <div class="mobile_menu">
+      <div class="close_btn">
+        <img src="img/icons/close.svg" alt="">
       </div>
       <ul>
-        <li><a href="https://explorer.win.win" target="_blank">Blockchain Explorer</a></li>
-        <li><a href="https://docs.win.win" target="_blank">User Guides</a></li>
+        <li><a href="https://shop.win.win" target="_blank">Shop</a></li>
+        <li><a href="/twins-coin.html">Stats</a></li>
+        <li><a href="https://explorer.win.win" target="_blank">Explorer</a></li>
+        <li><a href="https://map.win.win" target="_blank">Map</a></li>
+        <li><a href="https://docs.win.win" target="_blank">Guides</a></li>
         <li><a href="/#download">Wallets</a></li>
-        <li><a target="_blank" href="https://bitsane.com/exchange/twins-btc?ref=new_capital" target="_blank">Get $TWINS</a></li>
-
+        <li class="dropdown_mobile">
+          <a>Get $TWINS</a>
+          <ul >
+            <li> <a href="https://bitsane.com/exchange/twins-btc?ref=new_capital" target="_blank">&rarr;  bitsane.com</a> </li>
+            <li> <a href="https://p2pb2b.io/ru/trade/TWINS_BTC" target="_blank">&rarr;  p2pb2b.com</a> </li>
+          </ul>
+        </li>
       </ul>
     </div>
 
-    <section class="main_menu main_menu_coin_info">
-      <div class="left_side_menu">
-
-        <div class="small_logo">
-          <a href="index.html"><img src="img/small_logo.svg" alt=""></a>
-        </div>
-        <div class="small_divider">
-        </div>
-        <div class="menu_items">
-          <div class="mobile_button">
-            <img src="img/menu.svg" alt="">
-          </div>
-          <ul>
-            <li><a href="https://explorer.win.win" target="_blank">Blockchain Explorer</a></li>
-            <li><a href="https://docs.win.win" target="_blank">User Guides</a></li>
-            <li><a href="/#download">Wallets</a></li>
-            <li><a target="_blank" href="https://bitsane.com/exchange/twins-btc?ref=new_capital" target="_blank">Get $TWINS</a></li>
+    <!-- menu -->
+    <section class="main_menu fixed_bottom">
+      <div class="left_side">
+        <a href="/"> <img src="img/system/small_logo.svg" alt=""> </a>
+        <img class="mobile_menu_btn" src="img/icons/menu.svg" alt="">
+        <ul>
+          <li><a href="https://shop.win.win" target="_blank">Shop</a></li>
+          <li><a href="/twins-coin.html">Stats</a></li>
+          <li><a href="https://explorer.win.win" target="_blank">Explorer</a></li>
+          <li><a href="https://map.win.win" target="_blank">Map</a></li>
+          <li><a href="https://docs.win.win" target="_blank">Guides</a></li>
+          <li><a href="/#download">Wallets</a></li>
+          <li class="dropdown_desktop">
+            <span>Get $TWINS</span>
+            <ul >
+              <li> <a href="https://bitsane.com/exchange/twins-btc?ref=new_capital" target="_blank">bitsane.com</a> </li>
+              <li> <a href="https://p2pb2b.io/ru/trade/TWINS_BTC" target="_blank">p2pb2b.com</a> </li>
+            </ul>
+          </li>
         </ul>
-        </div>
       </div>
-      <div class="social">
+      <div class="right_side">
         <p>Join Us</p>
-        <a target="_blank" href="https://discordapp.com/invite/zZbnYKV">
-          <img src="img/discord.svg" alt="">
-        </a>
-        <a target="_blank" href="https://github.com/NewCapital">
-          <img src="img/github.svg" alt="">
-        </a>
-        <a target="_blank" href="https://twitter.com/TWINS_Coin">
-          <img src="img/twitter.svg" alt="">
-        </a>
+        <a href="#"> <img src="img/icons/twitter.svg" alt=""> </a>
+        <a href="#"> <img src="img/icons/discord.svg" alt=""> </a>
+        <a href="#"> <img src="img/icons/github.svg" alt=""> </a>
       </div>
     </section>
 
-    <!-- menu end ----------------------------------------------------------------->
+
     <div class="grid_container">
-      <div class="left_side">
+      <div class="left_side_block_coin">
         <div class="swither">
           <div class="coin_stat tg_btn_2 tg_btn_active">
             Coin Stats
@@ -106,7 +119,7 @@
                 BUY PRICE
               </div>
               <div class="logo_coin">
-                <img src="/img/buy.svg" alt="">
+                <img src="img/system/buy.svg" alt="">
               </div>
               <div class="btc_price">
                 ---
@@ -120,7 +133,7 @@
                 SELL PRICE
               </div>
               <div class="logo_coin">
-                <img src="/img/sell.svg" alt="">
+                <img src="img/system/sell.svg" alt="">
               </div>
               <div class="btc_price">
                 ---
@@ -154,7 +167,7 @@
           <iframe src="https://map.win.win/" width="" height=""></iframe>
         </div>
       </div>
-      <div class="right_side">
+      <div class="right_side_block_coin">
         <div class="box_left">
           <div id="market_cap" class="box">
             <div class="description_coin">
@@ -273,13 +286,13 @@
         </div>
       </div>
     </div>
-    <!-- app -------------------------------------------------------------------->
 
+    <!-- CONTENT END ---------------------------------------------------------->
 
-
-    <!-- app end -------------------------------------------------------------------->
+    <!-- js include ----------------------------------------------------------->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts" charset="utf-8"></script>
     <script src="js/jquery-3.3.1.min.js" charset="utf-8"></script>
     <script src="js/script.js" charset="utf-8"></script>
+
   </body>
 </html>
