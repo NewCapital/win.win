@@ -149,6 +149,7 @@ p {
 .dropdown_desktop {
   position: relative;
   cursor: pointer;
+  padding-top: 3px;
 }
 .dropdown_desktop span {
   display: block;
