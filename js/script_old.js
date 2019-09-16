@@ -307,6 +307,31 @@ $(document).ready(function() {
       success: function(data) {
 
         btc_price = Number(data.usd_price.TWINS);
+        var var2 = Number(data.usd_price.TWINS / data.usd_price.BTC);
+
+        $('#twins_bid .usd_price').html("$" + btc_price.toFixed(6));
+        $('#twins_bid .btc_price').html(var2.toFixed(8) + " BTC");
+
+
+        // btc_price = Number(data.usd_price.TWINS);
+        // twins_price_bid = Number(data.usd_price.BTC);
+        //
+        // usd_price = Number(btc_price)
+        //
+        // $('#twins_ask .btc_price').html(twins_price_bid.toFixed(8) + " BTC");
+        // $('#twins_bid .usd_price').html("$" + btc_price.toFixed(6));
+        //
+        // twins_price_ask = Number(data.highestBid);
+        // $('#twins_bid .btc_price').html(twins_price_ask.toFixed(8) + " BTC");
+        // $('#twins_ask .usd_price').html("$" + (btc_price * twins_price_bid / twins_price_ask).toFixed(6));
+        //
+        //
+        // // twins_price_ask indication
+        // var twins_bid_id = $('#twins_bid');
+        // var twins_ask_id = $('#twins_ask');
+        //
+        // twinsIndication(old_twins_price_ask, twins_price_ask, twins_bid_id);
+        // twinsIndication(old_twins_price_bid, twins_price_bid, twins_ask_id);
 
       },
       complete: function() {
@@ -314,43 +339,9 @@ $(document).ready(function() {
       }
     });
   }
-
-  // coin data blocks top
-
-  function getExchangeDataBasics() {
-    $.ajax({
-      url: 'https://api.new.capital/v1/ticker?symbol=TWINS_BTC',
-      success: function(data) {
-
-        var bid_price = Number(data.bidPrice);
-        var ask_price = Number(data.askPrice);
-
-        var usd_bid_price = bid_price / btc_price;
-        var usd_ask_price = ask_price / btc_price;
-
-        var usd_bid_price_2 = Number(usd_bid_price);
-        var usd_ask_price_2 = Number(usd_ask_price);
-
-
-        $('#twins_ask .btc_price').html(bid_price.toFixed(11) + " BTC");
-        $('#twins_bid .btc_price').html(ask_price.toFixed(11) + " BTC");
-
-        $('#twins_ask .usd_price').html("$" + (usd_bid_price_2).toFixed(6));
-        $('#twins_bid .usd_price').html("$" + (usd_ask_price_2).toFixed(6));
-
-      },
-      complete: function() {
-        setTimeout(getExchangeDataBasics, 10000);
-      }
-    });
-  }
-
-  //  --------------------------------------------------------------------------
   getExchangeData();
   getExplorerData();
-  getExchangeDataBasics();
   //  --------------------------------------------------------------------------
-
 
   // chart code ----------------------------------------------------------------
 
@@ -409,7 +400,7 @@ $(document).ready(function() {
         // data: [0]
     }],
     title: {
-        text: 'Average TWINS Price (baced on New.Capital Exchange)',
+        text: 'Average TWINS Price (baced on Bitsane.com)',
         align: 'left'
     },
     grid: {
@@ -501,37 +492,21 @@ $(document).ready(function() {
   // update graph 7 days
   var updateWeek = function() {
     $.ajax({
-      url: 'https://api.new.capital/v1/trades?symbol=TWINS_BTC',
+      url: 'https://api.wallet.app/api/get-market-chart/btc/7',
       success: function(data) {
-        console.log(data);
 
-        var btc = data.map(function(data) {
-          return data.price;
+        var prices = data.prices.reverse();
+
+        var btc = prices.map(function(data) {
+          return (data.btc * 100000000).toFixed(2);
         });
 
-        var timeDate = data.map(function(data) {
-          var compile = new Date(data.time)
+        var timeDate = prices.map(function(data) {
+          var compile = new Date(data.timestamp)
           return compile;
         });
 
-        console.log(timeDate);
-
         pushDataChart(btc, timeDate);
-
-        // ---
-
-        // var prices = data.prices.reverse();
-        //
-        // var btc = prices.map(function(data) {
-        //   return (data.btc * 100000000).toFixed(2);
-        // });
-        //
-        // var timeDate = prices.map(function(data) {
-        //   var compile = new Date(data.timestamp)
-        //   return compile;
-        // });
-        //
-        // pushDataChart(btc, timeDate);
       }
     });
     reUpdateWeek = setTimeout(updateWeek, 600000);
