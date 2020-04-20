@@ -109,7 +109,7 @@ $(document).ready(function() {
   // get data to the swither from API function
   function getSliderData() {
     $.ajax({
-      url: 'https://explorer.win.win/ext/getstats',
+      url: 'https://chain.review/api/db/twins/getstats',
       success: function(data) {
         $('.stats_2 span').html(data.total_wallets_count);
         $('.stats_3 span').html(data.active_wallets_count);
@@ -243,7 +243,7 @@ $(document).ready(function() {
 
   function getExplorerData() {
     $.ajax({
-      url: 'https://explorer.win.win/ext/getstats',
+      url: 'https://chain.review/api/db/twins/getstats',
       success: function(data) {
         active_wallets_count = data.active_wallets_count;
         var total_wallets = data.total_wallets_count;
