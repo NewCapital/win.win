@@ -106,29 +106,6 @@ $(document).ready(function() {
   // start after page loaded
   headSlider();
 
-  // get data to the swither from API function
-  function getSliderData() {
-    $.ajax({
-      url: 'https://chain.review/api/db/twins/getstats',
-      success: function(data) {
-        $('.stats_2 span').html(data.total_wallets_count);
-        $('.stats_3 span').html(data.active_wallets_count);
-        $('.stats_4 span').html(numberWithSpaces(data.money_supply.toFixed()) + ' $TWINS');
-        $('.stats_5 span').html(data.masternode_count);
-        $('.stats_6 span').html(data.block_count);
-        $('.stats_7 span').html(numberWithSpaces(data.dev_wallet_balance.toFixed()) + ' $TWINS');
-        $('.stats_8 span').html(data.twins_locked);
-        $('.stats_9 span').html(data.average_sec_per_block.toFixed(2) + ' sec');
-      },
-      complete: function() {
-        // Schedule the next request when the current one's complete
-        setTimeout(getSliderData(), 60000);
-      }
-    });
-  }
-  // get data after load page
-  getSliderData();
-
   // text remake
   function numberWithSpaces(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
@@ -241,66 +218,86 @@ $(document).ready(function() {
     }
   }
 
+	var gettingExplorerData = false;
   function getExplorerData() {
+	  gettingExplorerData = true;
     $.ajax({
-      url: 'https://chain.review/api/db/twins/getstats',
+      url: 'https://sandbox.chain.review/api/db/twins/getstats',
       success: function(data) {
-        active_wallets_count = data.active_wallets_count;
-        var total_wallets = data.total_wallets_count;
-        $('#active_wallets .data_coin').html(active_wallets_count + " / " + total_wallets);
-
-        dev_wallet_balance = (data.dev_wallet_balance / 1000000).toFixed(3);
-
-        $('#dev_fund .data_coin').html(dev_wallet_balance + "M");
-
-        money_supply = (data.money_supply / 1000000).toFixed(3);
-        $('#coin_supply .data_coin').html(money_supply + "M");
-
-        twins_locked = data.masternode_count;
-        $('#coin_locked .data_coin').html(twins_locked + "M" + " (" + (twins_locked / money_supply * 100).toFixed(2) + "%)");
-
-
-        node_worth = 1000000 * btc_price;
-        $('#node_worth .data_coin').html("$" + node_worth.toFixed(2));
-
-        market_cap = (money_supply * btc_price).toFixed(3);
-        $('#market_cap .data_coin').html("$" + market_cap + "M");
-
-        blockTimeCoin = data.average_sec_per_block;
-        $('#block_time .data_coin').html(blockTimeCoin.toFixed(2) + " Sec");
-
-
-        // market_cap indication
-        var marcer_cap_id = $('#market_cap');
-        twinsIndication(old_market_cap, market_cap, marcer_cap_id);
-
-        // node_worth indication
-        var node_worth_id = $('#node_worth');
-        twinsIndication(old_node_worth, node_worth, node_worth_id);
-
-        // twins_locked indication
-        var coin_locked_id = $('#coin_locked');
-        twinsIndication(old_twins_locked, twins_locked, coin_locked_id);
-
-        // dev_wallet_balance indication
-        var dev_fund_id = $('#dev_fund');
-        twinsIndication(old_dev_wallet_balance, dev_wallet_balance, dev_fund_id);
-
-        // active_wallets_count indication
-        var active_wallets_id = $('#active_wallets');
-        twinsIndication(old_active_wallets_count, active_wallets_count, active_wallets_id);
-
-        // money_supply indication
-        var coin_supply_id = $('#coin_supply');
-        twinsIndication(old_money_supply, money_supply, coin_supply_id);
-
+        setExplorerData(data);
+		setSliderData(data);
+		gettingExplorerData = false;
       },
+	  error: function() {
+		  gettingExplorerData = false;
+	  },
       complete: function() {
-        setTimeout(getExplorerData, 10000);
+        setTimeout(getExplorerData, 60000);
       }
     });
   }
 
+	function setExplorerData(data) {
+		active_wallets_count = data.active_wallets_count;
+		var total_wallets = data.total_wallets_count;
+		$('#active_wallets .data_coin').html(active_wallets_count + " / " + total_wallets);
+
+		dev_wallet_balance = (data.dev_wallet_balance / 1000000).toFixed(3);
+
+		$('#dev_fund .data_coin').html(dev_wallet_balance + "M");
+
+		money_supply = (data.money_supply / 1000000).toFixed(3);
+		$('#coin_supply .data_coin').html(money_supply + "M");
+
+		twins_locked = data.masternode_count;
+		$('#coin_locked .data_coin').html(twins_locked + "M" + " (" + (twins_locked / money_supply * 100).toFixed(2) + "%)");
+
+
+		node_worth = 1000000 * btc_price;
+		$('#node_worth .data_coin').html("$" + node_worth.toFixed(2));
+
+		market_cap = (money_supply * btc_price).toFixed(3);
+		$('#market_cap .data_coin').html("$" + market_cap + "M");
+
+		blockTimeCoin = data.average_sec_per_block;
+		$('#block_time .data_coin').html(blockTimeCoin.toFixed(2) + " Sec");
+
+
+		// market_cap indication
+		var marcer_cap_id = $('#market_cap');
+		twinsIndication(old_market_cap, market_cap, marcer_cap_id);
+
+		// node_worth indication
+		var node_worth_id = $('#node_worth');
+		twinsIndication(old_node_worth, node_worth, node_worth_id);
+
+		// twins_locked indication
+		var coin_locked_id = $('#coin_locked');
+		twinsIndication(old_twins_locked, twins_locked, coin_locked_id);
+
+		// dev_wallet_balance indication
+		var dev_fund_id = $('#dev_fund');
+		twinsIndication(old_dev_wallet_balance, dev_wallet_balance, dev_fund_id);
+
+		// active_wallets_count indication
+		var active_wallets_id = $('#active_wallets');
+		twinsIndication(old_active_wallets_count, active_wallets_count, active_wallets_id);
+
+		// money_supply indication
+		var coin_supply_id = $('#coin_supply');
+		twinsIndication(old_money_supply, money_supply, coin_supply_id);
+	}
+	
+	function setSliderData(data) {
+		$('.stats_2 span').html(data.total_wallets_count);
+        $('.stats_3 span').html(data.active_wallets_count);
+        $('.stats_4 span').html(numberWithSpaces(data.money_supply.toFixed()) + ' $TWINS');
+        $('.stats_5 span').html(data.masternode_count);
+        $('.stats_6 span').html(data.block_count);
+        $('.stats_7 span').html(numberWithSpaces(data.dev_wallet_balance.toFixed()) + ' $TWINS');
+        $('.stats_8 span').html(data.twins_locked);
+        $('.stats_9 span').html(data.average_sec_per_block.toFixed(2) + ' sec');
+	}
   function getExchangeData() {
     $.ajax({
       url: 'https://api.new.capital/v1/exchangeInfo',
