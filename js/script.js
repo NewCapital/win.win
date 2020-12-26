@@ -287,12 +287,11 @@ $(document).ready(function() {
 		var coin_supply_id = $('#coin_supply');
 		twinsIndication(old_money_supply, money_supply, coin_supply_id);
 	}
-	
+
 	function setSliderData(data) {
 		$('.stats_2 span').html(data.total_wallets_count);
         $('.stats_3 span').html(data.active_wallets_count);
         $('.stats_4 span').html(numberWithSpaces(data.money_supply.toFixed()) + ' $TWINS');
-        $('.stats_5 span').html(data.masternode_count);
         $('.stats_6 span').html(data.block_count);
         $('.stats_7 span').html(numberWithSpaces(data.dev_wallet_balance.toFixed()) + ' $TWINS');
         $('.stats_8 span').html(data.twins_locked);
