@@ -89,7 +89,7 @@ $(document).ready(function() {
   var idCounter = 1;
 
   function headSlider() {
-    if (idCounter < 10) {
+    if (idCounter < 7) {
       $('.stats_' + idCounter).show().addClass('animated fadeInDown');
       setTimeout(function() {
         $('.stats_' + idCounter).show().addClass('fadeOutDown');
@@ -292,10 +292,10 @@ $(document).ready(function() {
 		$('.stats_2 span').html(data.total_wallets_count);
         $('.stats_3 span').html(data.active_wallets_count);
         $('.stats_4 span').html(numberWithSpaces(data.money_supply.toFixed()) + ' $TWINS');
-        $('.stats_6 span').html(data.block_count);
+        $('.stats_5 span').html(data.block_count);
         $('.stats_7 span').html(numberWithSpaces(data.dev_wallet_balance.toFixed()) + ' $TWINS');
         $('.stats_8 span').html(data.twins_locked);
-        $('.stats_9 span').html(data.average_sec_per_block.toFixed(2) + ' sec');
+        $('.stats_6 span').html(data.average_sec_per_block.toFixed(2) + ' sec');
 	}
   function getExchangeData() {
     $.ajax({

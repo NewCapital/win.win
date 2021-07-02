@@ -80,6 +80,9 @@
   .wallet_container {
     margin-bottom: 16px;
   }
+  .livecoinwatch-widget-1 {
+    width: 300px!important;
+  }
 }
 @media (max-width: 420px) {
   .top_header {

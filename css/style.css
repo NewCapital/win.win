@@ -266,6 +266,7 @@ p {
   border-radius: 500px;
   margin-top: 32px;
   width: 400px;
+  margin-bottom: 16px;
 }
 .info_icon {
   height: 24px;
@@ -296,7 +297,7 @@ p {
   color: #ffffff;
   font-weight: 600;
 }
-.stats_1, .stats_2, .stats_3, .stats_4, .stats_5, .stats_6, .stats_7, .stats_8, .stats_9 {
+.stats_1, .stats_2, .stats_3, .stats_4, .stats_5, .stats_6 {
   display: none;
 }
 
@@ -975,4 +976,7 @@ th, td {
     font-size: 14px;
   }
 }
+.livecoinwatch-widget-1 {
+    width: 400px!important;
+  }
 /* -------------------------------------------------------------------------- */
