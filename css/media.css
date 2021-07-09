@@ -1,4 +1,12 @@
 @media (max-width: 720px) {
+
+  .three_blocks {
+    flex-direction: column;
+  }
+  .three_blocks h2 {
+    text-align: left!important;
+  }
+
   .divider, .left_side ul {
     display: none;
   }

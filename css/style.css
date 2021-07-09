@@ -979,4 +979,36 @@ th, td {
 .livecoinwatch-widget-1 {
     width: 400px!important;
   }
+
+.three_blocks {
+  display: flex;
+}
+.single_block {
+  flex: 1 0 0;
+  margin-right: 32px;
+  margin-left: 32px;
+  text-align: center;
+}
+.service_logo {
+  background-color: #ffffff;
+  display: flex;
+  /*width: 314px;*/
+  height: 100px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  align-items: center;
+  justify-content: center;
+}
+.service_logo img {
+  width: 100%;
+  height: auto;
+  align-items: center;
+}
+.single_block h2 {
+  margin-bottom: 32px;
+  font-size: 28px;
+}
+
+
 /* -------------------------------------------------------------------------- */
+
