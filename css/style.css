@@ -265,7 +265,7 @@ p {
   display: flex;
   border-radius: 500px;
   margin-top: 32px;
-  width: 400px;
+  width: 385px;
   margin-bottom: 16px;
 }
 .info_icon {
@@ -279,14 +279,14 @@ p {
   color: #cccccc;
   overflow: hidden;
   height: 40px;
-  width: 400px;
+  width: 385px;
   position: relative;
 }
 .coin_stats_inner {
   position: relative;
 }
 .stats {
-  width: 400px;
+  width: 385px;
   padding: 8px;
   box-sizing: border-box;
   position: absolute;
@@ -976,9 +976,6 @@ th, td {
     font-size: 14px;
   }
 }
-.livecoinwatch-widget-1 {
-    width: 400px!important;
-  }
 
 .three_blocks {
   display: flex;
@@ -1011,4 +1008,3 @@ th, td {
 
 
 /* -------------------------------------------------------------------------- */
-
